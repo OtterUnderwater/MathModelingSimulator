@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MathModelingSimulator.Views.MenuNavigationView"
+			 x:DataType="vm:MainWindowViewModel"
+			 xmlns:vm="using:MathModelingSimulator.ViewModels">
+
+	<Grid RowDefinitions="50, *" ColumnDefinitions="*,*,*">
+		<Button Grid.Row="0"
+			Grid.Column="0"
+			Content="Профиль"
+			Command="{Binding MenuVM.GetPageAccount}"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"/>
+		<Button Grid.Row="0"
+				Grid.Column="1"
+				Content="Тренажеры"
+				Command="{Binding MenuVM.GetPageSimulators}"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"/>
+		<Button Grid.Row="0"
+			Grid.Column="2"
+			Content="Статистика"
+			Command="{Binding MenuVM.GetPageStatistics}"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"/>
+		<ScrollViewer Grid.Row="1" Grid.ColumnSpan="3">
+			<UserControl Content="{Binding PageSwitch.View}"/>
+		</ScrollViewer>
+	</Grid>
+
+</UserControl>

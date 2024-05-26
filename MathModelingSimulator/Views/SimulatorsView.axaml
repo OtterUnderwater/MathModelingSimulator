@@ -3,15 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="MathModelingSimulator.Views.AuthorizationView"
+             x:Class="MathModelingSimulator.Views.SimulatorsView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
-
-	<StackPanel>
-		<TextBlock Text="{Binding AuthVM.Massage}"/>
-		<TextBox Text="{Binding AuthVM.Login}"/>
-		<!--Тут логин, пароль, кнопка регистрация-->
-		<Button Content="Регистрация" Command="{Binding AuthVM.Click}"/>
-	</StackPanel>
-  
+	Welcome to SimulatorsView!
 </UserControl>

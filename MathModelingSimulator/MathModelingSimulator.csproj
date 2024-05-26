@@ -36,4 +36,11 @@
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.18" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Update="Views\MenuNavigationView.axaml.cs">
+      <DependentUpon>MenuNavigationView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
