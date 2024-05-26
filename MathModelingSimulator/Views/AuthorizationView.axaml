@@ -6,12 +6,41 @@
              x:Class="MathModelingSimulator.Views.AuthorizationView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
-
-	<StackPanel>
-		<TextBlock Text="{Binding AuthVM.Massage}"/>
-		<TextBox Text="{Binding AuthVM.Login}"/>
-		<!--Тут логин, пароль, кнопка регистрация-->
-		<Button Content="Регистрация" Command="{Binding AuthVM.Click}"/>
+	
+	
+	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+		<!--Биндинги изменить-->
+		<TextBlock 
+			Text="Вход" 
+			FontWeight="Bold" 
+			FontSize="24" 
+			TextAlignment="Center"
+			Margin="0 0 0 20"/>
+		<TextBox 
+			Watermark="Логин" 
+			Name="login" 
+			Text="{Binding AuthVM.Login}"/>
+		<TextBox 
+			Watermark="Пароль" 
+			Name="password" 
+			PasswordChar="●"  
+			Margin="0 20 0 0"
+			Text="{Binding AuthVM.Password}"/>
+		<Button 
+			Content="Войти"
+			HorizontalContentAlignment="Center"
+			Command="{Binding AuthVM.CheckAuthorization}"
+			HorizontalAlignment="Stretch"
+			Margin="0 20 0 20"/>
+		<TextBlock 
+			Text="---или---" 
+			HorizontalAlignment="Center"/>
+		<Button 
+			Content="Зарегистрироваться"
+			HorizontalContentAlignment="Center"
+			Command="{Binding AuthVM.Click}" 
+			HorizontalAlignment="Stretch" 
+			Margin="0 20 0 20"/>
 	</StackPanel>
-  
+
 </UserControl>

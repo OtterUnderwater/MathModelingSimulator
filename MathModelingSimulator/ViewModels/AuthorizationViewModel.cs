@@ -10,11 +10,16 @@ namespace MathModelingSimulator.ViewModels
 		private string login = "";
 		public string Login { get => login; set => login = value; }
 
-		private string massage = "";
+        private string password = "";
+		public string Password { get => password; set => password = value; }
+
+
+        private string massage = "";
 		//SetProperty для обновления данных на странице
 		public string Massage { get => massage; set => this.SetProperty(ref massage, value); }
+        
 
-		public void Click(string name)
+        public void Click(string name)
 		{
 			StartPage.View = new RegistrationView();
 		}
@@ -22,7 +27,7 @@ namespace MathModelingSimulator.ViewModels
 		//Если авторизация/регистрация успешна - открываем меню
 		public void CheckAuthorization(string name)
 		{
-			User? authorization = ContextDb.Users.FirstOrDefault(u => u.Login == Login); /*TO DO: Проверка*/
+			User? authorization = ContextDb.Users.FirstOrDefault(u => u.Login == Login && u.Password == Password); /*TO DO: Проверка*/
 			if (authorization == null)
 			{
 				Massage = "Такого пользователя нет";
