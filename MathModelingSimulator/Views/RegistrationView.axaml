@@ -54,7 +54,7 @@
 			HorizontalContentAlignment="Center"
 			HorizontalAlignment="Stretch"
 			Margin="0 20 0 20"
-			Command="{Binding AuthVM.Click}" />
+			Command="{Binding RegVM.CheckRegistration}" />
 		<TextBlock
 			Text="---или---"
 			HorizontalAlignment="Center"/>
@@ -63,6 +63,6 @@
 			HorizontalContentAlignment="Center"
 			HorizontalAlignment="Stretch"
 			Margin="0 20 0 20"
-			Command="{Binding RegVM.Click}"/>
+			Command="{Binding RegVM.GoToAuthorization}"/>
 	</StackPanel>
 </UserControl>

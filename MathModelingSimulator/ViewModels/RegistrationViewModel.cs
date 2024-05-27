@@ -34,11 +34,12 @@ namespace MathModelingSimulator.ViewModels
         private string massage = "";
         public string Massage { get => massage; set => this.SetProperty(ref massage, value); }
 
-        public void Click()
+		public void GoToAuthorization()
         {
-            StartPage.View = new AuthorizationView();
-        }
-        public void CheckRegistration()
+			StartPage.View = new AuthorizationView();
+		}
+
+		public void CheckRegistration()
         {
             if (isTrueData())
             {

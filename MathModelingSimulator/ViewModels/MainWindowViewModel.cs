@@ -16,8 +16,7 @@ namespace MathModelingSimulator.ViewModels
         public RegistrationViewModel RegVM { get => registrationViewModel; set => registrationViewModel = value; }
 
         MenuNavigationViewModel menuNavigationVM = new MenuNavigationViewModel();
-		public MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
-        
+		public MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }     
         #endregion
 
         public MainWindowViewModel()

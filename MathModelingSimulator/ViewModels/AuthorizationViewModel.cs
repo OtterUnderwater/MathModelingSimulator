@@ -13,12 +13,10 @@ namespace MathModelingSimulator.ViewModels
         private string password = "";
 		public string Password { get => password; set => password = value; }
 
-
         private string massage = "";
 		public string Massage { get => massage; set => this.SetProperty(ref massage, value); }
-        
 
-        public void Click(string name)
+		public void GoToRegistration(string name)
 		{
 			StartPage.View = new RegistrationView();
 		}
