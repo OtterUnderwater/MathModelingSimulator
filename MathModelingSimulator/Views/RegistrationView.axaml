@@ -6,28 +6,63 @@
              x:Class="MathModelingSimulator.Views.RegistrationView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
-	<StackPanel>
-		<StackPanel>
-			<!--Биндинги изменить-->
-			<TextBlock Text="{Binding AuthVM.Massage}"/>
-			<TextBlock Text="Введите фамилию:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			<TextBlock Text="Введите имя:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			<TextBlock Text="Введите отчество:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			<TextBlock Text="Введите телефон:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			<TextBlock Text="Введите почту:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			<TextBlock Text="Придумайте логин:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			<TextBlock Text="Придумайте пароль:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			<TextBlock Text="Выберите роль:"/>
-			<TextBox Text="{Binding AuthVM.Login}"/>
-			
-			<Button Content="Регистрация" Command="{Binding AuthVM.Click}"/>
-		</StackPanel>
+	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+		<TextBlock
+			Text="Регистрация"
+			FontWeight="Bold"
+			FontSize="24"
+			TextAlignment="Center"
+			Margin="0 0 0 20"/>
+		<TextBox
+			Watermark="Фамилия"
+			Name="surname"
+			Margin="0 20 0 0"
+			Text="{Binding RegVM.Surname}"/>
+		<TextBox
+			Watermark="Имя"
+			Name="name"
+			Margin="0 20 0 0"
+			Text="{Binding RegVM.Name}"/>
+		<TextBox
+			Watermark="Отчество"
+			Name="patronymic"
+			Margin="0 20 0 0"
+			Text="{Binding RegVM.Patronymic}"/>
+		<TextBox
+			Watermark="Телефон"
+			Name="telephone"
+			Margin="0 20 0 0"
+			Text="{Binding RegVM.Telephone}"/>
+		<TextBox
+			Watermark="Почта"
+			Name="email"
+			Margin="0 20 0 0"
+			Text="{Binding RegVM.Email}"/>
+		<TextBox
+			Watermark="Логин"
+			Name="login"
+			Margin="0 20 0 0"
+			Text="{Binding RegVM.Login}"/>
+		<TextBox
+			Watermark="Пароль"
+			Name="password"
+			PasswordChar="●"
+			Margin="0 20 0 0"
+			Text="{Binding RegVM.Password}"/>
+		<Button
+			Content="Зарегистрироваться"
+			HorizontalContentAlignment="Center"
+			HorizontalAlignment="Stretch"
+			Margin="0 20 0 20"
+			Command="{Binding AuthVM.Click}" />
+		<TextBlock
+			Text="---или---"
+			HorizontalAlignment="Center"/>
+		<Button
+			Content="Войти"
+			HorizontalContentAlignment="Center"
+			HorizontalAlignment="Stretch"
+			Margin="0 20 0 20"
+			Command="{Binding RegVM.Click}"/>
 	</StackPanel>
 </UserControl>

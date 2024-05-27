@@ -12,11 +12,15 @@ namespace MathModelingSimulator.ViewModels
 		AuthorizationViewModel authorizationVM = new AuthorizationViewModel();
 		public AuthorizationViewModel AuthVM { get => authorizationVM; set => authorizationVM = value; }
 
-		MenuNavigationViewModel menuNavigationVM = new MenuNavigationViewModel();
-		public MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
-		#endregion
+        RegistrationViewModel registrationViewModel = new RegistrationViewModel();
+        public RegistrationViewModel RegVM { get => registrationViewModel; set => registrationViewModel = value; }
 
-		public MainWindowViewModel()
+        MenuNavigationViewModel menuNavigationVM = new MenuNavigationViewModel();
+		public MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
+        
+        #endregion
+
+        public MainWindowViewModel()
 		{
 			StartPage.View = new AuthorizationView();
 			PageSwitch.View = new SimulatorsView();

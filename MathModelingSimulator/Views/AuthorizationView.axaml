@@ -9,7 +9,6 @@
 	
 	
 	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
-		<!--Биндинги изменить-->
 		<TextBlock 
 			Text="Вход" 
 			FontWeight="Bold" 
@@ -26,21 +25,22 @@
 			PasswordChar="●"  
 			Margin="0 20 0 0"
 			Text="{Binding AuthVM.Password}"/>
+		<TextBlock Text="{Binding AuthVM.Massage}"/>
 		<Button 
 			Content="Войти"
 			HorizontalContentAlignment="Center"
-			Command="{Binding AuthVM.CheckAuthorization}"
 			HorizontalAlignment="Stretch"
-			Margin="0 20 0 20"/>
+			Margin="0 20 0 20"
+			Command="{Binding AuthVM.CheckAuthorization}"/>
 		<TextBlock 
 			Text="---или---" 
 			HorizontalAlignment="Center"/>
 		<Button 
 			Content="Зарегистрироваться"
 			HorizontalContentAlignment="Center"
-			Command="{Binding AuthVM.Click}" 
 			HorizontalAlignment="Stretch" 
-			Margin="0 20 0 20"/>
+			Margin="0 20 0 20"
+			Command="{Binding AuthVM.Click}" />
 	</StackPanel>
 
 </UserControl>

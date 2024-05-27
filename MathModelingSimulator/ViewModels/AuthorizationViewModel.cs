@@ -15,7 +15,6 @@ namespace MathModelingSimulator.ViewModels
 
 
         private string massage = "";
-		//SetProperty для обновления данных на странице
 		public string Massage { get => massage; set => this.SetProperty(ref massage, value); }
         
 
