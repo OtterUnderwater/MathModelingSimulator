@@ -2,72 +2,132 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="MathModelingSimulator.Views.RegistrationView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
-	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
-		<TextBlock
-			Text="Регистрация"
-			FontWeight="Bold"
-			FontSize="24"
-			TextAlignment="Center"
-			Margin="0 0 0 20"/>
-		<TextBox
-			Watermark="Фамилия"
-			Name="surname"
-			Margin="0 20 0 0"
-			Text="{Binding RegVM.Surname}"/>
-		<TextBox
-			Watermark="Имя"
-			Name="name"
-			Margin="0 20 0 0"
-			Text="{Binding RegVM.Name}"/>
-		<TextBox
-			Watermark="Отчество"
-			Name="patronymic"
-			Margin="0 20 0 0"
-			Text="{Binding RegVM.Patronymic}"/>
-		<TextBox
-			Watermark="Телефон"
-			Name="telephone"
-			Margin="0 20 0 0"
-			Text="{Binding RegVM.Telephone}"/>
-		<TextBox
-			Watermark="Почта"
-			Name="email"
-			Margin="0 20 0 0"
-			Text="{Binding RegVM.Email}"/>
-		<TextBox
-			Watermark="Логин"
-			Name="login"
-			Margin="0 20 0 0"
-			Text="{Binding RegVM.Login}"/>
-		<TextBox
-			Watermark="Пароль"
-			Name="password"
-			PasswordChar="●"
-			Margin="0 20 0 0"
-			Text="{Binding RegVM.Password}"/>
-		<TextBlock
-			Text="{Binding RegVM.Message}"
-			TextAlignment="Center"
-			Foreground="White"
-			Margin="0 0 0 20"/>
-		<Button
-			Content="Зарегистрироваться"
-			HorizontalContentAlignment="Center"
-			HorizontalAlignment="Stretch"
-			Margin="0 20 0 20"
-			Command="{Binding RegVM.CheckRegistration}" />
-		<TextBlock
-			Text="---или---"
-			HorizontalAlignment="Center"/>
-		<Button
-			Content="Войти"
-			HorizontalContentAlignment="Center"
-			HorizontalAlignment="Stretch"
-			Margin="0 20 0 20"
-			Command="{Binding RegVM.GoToAuthorization}"/>
-	</StackPanel>
+	
+	<ScrollViewer>
+
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+
+			<TextBlock
+				Text="Регистрация"
+				FontWeight="Bold"
+				FontSize="24"
+				TextAlignment="Center"
+				Margin="0 0 0 0"/>
+			<TextBox
+				Watermark="Фамилия"
+				Name="surname"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Margin="0 20 0 0"
+				Text="{Binding RegVM.Surname}"/>
+			<TextBox
+				Watermark="Имя"
+				Name="name"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Margin="0 20 0 0"
+				Text="{Binding RegVM.Name}"/>
+			<TextBox
+				Watermark="Отчество"
+				Name="patronymic"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Margin="0 20 0 0"
+				Text="{Binding RegVM.Patronymic}"/>
+			<TextBox
+				Watermark="Телефон"
+				Name="telephone"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Margin="0 20 0 0"
+				Text="{Binding RegVM.Telephone}"/>
+			<TextBox
+				Watermark="Почта"
+				Name="email"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Margin="0 20 0 0"
+				Text="{Binding RegVM.Email}"/>
+			<TextBox
+				Watermark="Логин"
+				Name="login"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Margin="0 20 0 0"
+				Text="{Binding RegVM.Login}"/>
+			<TextBox
+				Watermark="Пароль"
+				Name="password"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				PasswordChar="●"
+				Margin="0 20 0 0"
+				Text="{Binding RegVM.Password}"/>
+			<Button
+				Content="Зарегистрироваться"
+				HorizontalContentAlignment="Center"
+				HorizontalAlignment="Stretch"
+				Background="#09A0B3"
+				Foreground="#FFFFFF"
+				CornerRadius="10"
+				Padding="15 8"
+				Margin="0 20 0 10"
+				Command="{Binding RegVM.CheckRegistration}" />
+			<TextBlock
+				Text="---или---"
+				HorizontalAlignment="Center"/>
+			<Button
+				Content="Войти"
+				HorizontalContentAlignment="Center"
+				HorizontalAlignment="Stretch"
+				Background="#09A0B3"
+				Foreground="#FFFFFF"
+				CornerRadius="10"
+				Padding="15 8"
+				Margin="0 10 0 20"
+				Command="{Binding RegVM.GoToAuthorization}"/>
+
+		</StackPanel>
+
+	</ScrollViewer>
+	
 </UserControl>

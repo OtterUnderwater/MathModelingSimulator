@@ -6,39 +6,64 @@
              x:Class="MathModelingSimulator.Views.AuthorizationView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
-	<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
-		<TextBlock 
-			Text="Вход" 
-			FontWeight="Bold" 
-			FontSize="24" 
-			TextAlignment="Center"
-			Margin="0 0 0 20"/>
-		<TextBox 
-			Watermark="Логин" 
-			Name="login" 
-			Text="{Binding AuthVM.Login}"/>
-		<TextBox 
-			Watermark="Пароль" 
-			Name="password" 
-			PasswordChar="●"  
-			Margin="0 20 0 0"
-			Text="{Binding AuthVM.Password}"/>
-		<TextBlock Text="{Binding AuthVM.Message}"/>
-		<Button 
-			Content="Войти"
-			HorizontalContentAlignment="Center"
-			HorizontalAlignment="Stretch"
-			Margin="0 20 0 20"
-			Command="{Binding AuthVM.CheckAuthorization}"/>
-		<TextBlock 
-			Text="---или---" 
-			HorizontalAlignment="Center"/>
-		<Button 
-			Content="Зарегистрироваться"
-			HorizontalContentAlignment="Center"
-			HorizontalAlignment="Stretch" 
-			Margin="0 20 0 20"
-			Command="{Binding AuthVM.GoToRegistration}" />
-	</StackPanel>
+	
+	<ScrollViewer>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+			<TextBlock
+				Text="Вход"
+				FontWeight="Bold"
+				FontSize="24"
+				TextAlignment="Center"
+				Margin="0 0 0 20"/>
+			<TextBox
+				Watermark="Логин"
+				Name="login"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Text="{Binding AuthVM.Login}"/>
+			<TextBox
+				Watermark="Пароль"
+				Name="password"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				PasswordChar="●"
+				Margin="0 20 0 0"
+				Text="{Binding AuthVM.Password}"/>
+			<TextBlock Text="{Binding AuthVM.Message}"/>
+			<Button
+				Content="Войти"
+				HorizontalContentAlignment="Center"
+				HorizontalAlignment="Stretch"
+				Background="#09A0B3"
+				Foreground="#FFFFFF"
+				CornerRadius="10"
+				Padding="15 8"
+				Margin="0 20 0 10"
+				Command="{Binding AuthVM.CheckAuthorization}"/>
+			<TextBlock
+				Text="---или---"
+				HorizontalAlignment="Center"/>
+			<Button
+				Content="Зарегистрироваться"
+				HorizontalContentAlignment="Center"
+				HorizontalAlignment="Stretch"
+				Background="#09A0B3"
+				Foreground="#FFFFFF"
+				CornerRadius="10"
+				Padding="15 8"
+				Margin="0 20 0 10"
+				Command="{Binding AuthVM.GoToRegistration}" />
+		</StackPanel>
 
+	</ScrollViewer>
 </UserControl>

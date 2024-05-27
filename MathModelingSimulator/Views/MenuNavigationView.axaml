@@ -8,12 +8,21 @@
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
 
 	<Grid RowDefinitions="50, *" ColumnDefinitions="*,*,*">
-		<Button Grid.Row="0"
+		<Border 
+			Grid.Row="0"
 			Grid.Column="0"
-			Content="Профиль"
-			Command="{Binding MenuVM.GetPageAccount}"
-			HorizontalAlignment="Stretch"
-			VerticalAlignment="Stretch"/>
+			BorderBrush="#09A0B3"
+			BorderThickness="1" CornerRadius="10">
+
+			<Button
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+				Foreground="Red"
+				Content="Профиль"
+				Command="{Binding MenuVM.GetPageAccount}"/>
+			
+		</Border>
+		
 		<Button Grid.Row="0"
 				Grid.Column="1"
 				Content="Тренажеры"

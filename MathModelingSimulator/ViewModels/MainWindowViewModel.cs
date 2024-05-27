@@ -16,13 +16,17 @@ namespace MathModelingSimulator.ViewModels
         public RegistrationViewModel RegVM { get => registrationViewModel; set => registrationViewModel = value; }
 
         MenuNavigationViewModel menuNavigationVM = new MenuNavigationViewModel();
-		public MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }     
+		public MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
+
+        SimulatorsViewModel simulatorsViewModel = new SimulatorsViewModel();
+        public SimulatorsViewModel SimulatorsVM { get => simulatorsViewModel; set => simulatorsViewModel = value; }
         #endregion
 
         public MainWindowViewModel()
 		{
 			StartPage.View = new AuthorizationView();
 			PageSwitch.View = new SimulatorsView();
+
 		}
 	}
 }

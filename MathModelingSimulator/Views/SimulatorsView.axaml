@@ -5,6 +5,118 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MathModelingSimulator.Views.SimulatorsView"
 			 x:DataType="vm:MainWindowViewModel"
-			 xmlns:vm="using:MathModelingSimulator.ViewModels">
+			 xmlns:vm="using:MathModelingSimulator.ViewModels"
+			 >
+	
+	<ScrollViewer>
+		
+		<StackPanel >
+
+			<StackPanel HorizontalAlignment="Stretch" Margin="100 0" >
+
+				<Border 
+					BorderBrush="#000000" 
+					BorderThickness="1" 
+					Background="#DEF7FF" 
+					CornerRadius="10"
+					Margin="0 20 0 0">
+
+					<Button
+						HorizontalAlignment="Stretch"
+						Background="Transparent"
+						Foreground="Black"
+						Padding="20 10 20 10"
+						Content="Тренажер 1. Транспортные задачи">
+						
+					</Button>
+					
+				</Border>
+
+				<Border
+					BorderBrush="#000000"
+					BorderThickness="1"
+					Background="#DEF7FF"
+					CornerRadius="10"
+					Margin="0 20 0 0">
+
+					<Button
+						HorizontalAlignment="Stretch"
+						Background="Transparent"
+						Foreground="Black"
+						Padding="20 10 20 10"
+						Content="Тренажер 2. Симплекс метод"/>
+
+				</Border>
+
+				<Border
+					BorderBrush="#000000"
+					BorderThickness="1"
+					Background="#DEF7FF"
+					CornerRadius="10"
+					Margin="0 20 0 0">
+
+					<Button
+						HorizontalAlignment="Stretch"
+						Background="Transparent"
+						Foreground="Black"
+						Padding="20 10 20 10"
+						Content="Тренажер 3. Задача Коммивояжера"/>
+
+				</Border>
+
+				<Border
+					BorderBrush="#000000"
+					BorderThickness="1"
+					Background="#DEF7FF"
+					CornerRadius="10"
+					Margin="0 20 0 0">
+
+					<Button
+						HorizontalAlignment="Stretch"
+						Background="Transparent"
+						Foreground="Black"
+						Padding="20 10 20 10"
+						Content="Тренажер 4. Графический метод"/>
+
+				</Border>
+
+				<Border
+					BorderBrush="#000000"
+					BorderThickness="1"
+					Background="#DEF7FF"
+					CornerRadius="10"
+					Margin="0 20 0 0">
+
+					<Button
+						HorizontalAlignment="Stretch"
+						Background="Transparent"
+						Foreground="Black"
+						Padding="20 10 20 10"
+						Content="Тренажер 5. Критический путь"/>
+
+				</Border>
+
+				<Border
+					BorderBrush="#000000"
+					BorderThickness="1"
+					Background="#DEF7FF"
+					CornerRadius="10"
+					Margin="0 20 0 0">
+
+					<Button
+						HorizontalAlignment="Stretch"
+						Background="Transparent"
+						Foreground="Black"
+						Padding="20 10 20 10"
+						Content="Тренажер 6. Кратчайший путь"/>
+
+				</Border>
+
+			</StackPanel>
+
+
+		</StackPanel>
+		
+	</ScrollViewer>
 	
 </UserControl>

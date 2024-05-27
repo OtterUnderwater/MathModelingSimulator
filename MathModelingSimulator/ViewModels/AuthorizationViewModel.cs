@@ -20,13 +20,13 @@ namespace MathModelingSimulator.ViewModels
         private string message = "";
 		public string Message { get => message; set => this.SetProperty(ref message, value); }
 
-		public void GoToRegistration(string name)
+		public void GoToRegistration()
 		{
 			StartPage.View = new RegistrationView();
 		}
 
 		//Если авторизация/регистрация успешна - открываем меню
-		public void CheckAuthorization(string name)
+		public void CheckAuthorization()
 		{
 			Security security = new Security();
 			string passwordHash = security.GetHashPassword(password);
@@ -39,10 +39,6 @@ namespace MathModelingSimulator.ViewModels
 			{
 				StartPage.View = new MenuNavigationView();
 			}
-
-			/*//Сохранение в БД пример:
-			ContextDb.Users.Add(...);
-			ContextDb.SaveChanges();*/
 		}
 	}
 }
