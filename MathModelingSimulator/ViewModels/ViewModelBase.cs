@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MathModelingSimulator.Models;
 using MathModelingSimulator.Navigation;
+using System.Text;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -21,5 +22,9 @@ namespace MathModelingSimulator.ViewModels
 
 		private Trio33pContext _contextDb = new Trio33pContext();
 		public Trio33pContext ContextDb { get => _contextDb; set => _contextDb = value; }
+
+		//Ключ для хэша пароля БД	
+		private readonly byte[] _keyDb = Encoding.UTF8.GetBytes("trioSecretKey");
+		public byte[] KeyDb { get => _keyDb; }
 	}
 }

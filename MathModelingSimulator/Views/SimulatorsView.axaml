@@ -7,20 +7,4 @@
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
 	
-	<ScrollViewer>
-		<StackPanel>
-			<Button Content="Задача коммивояжера"
-					Command="{Binding SimulatorsVM.GetTask}"
-					CommandParameter="1"/>
-			<Button Content="Северо-западный метод"
-					Command="{Binding SimulatorsVM.GetTask}"
-					CommandParameter="2"/>
-			<Button Content="Метод минимальной стоимости"
-					Command="{Binding SimulatorsVM.GetTask}"
-					CommandParameter="3"/>
-			<Button Content="Дейкстра"
-					Command="{Binding SimulatorsVM.GetTask}"
-					CommandParameter="4"/>
-		</StackPanel>
-	</ScrollViewer>
 </UserControl>

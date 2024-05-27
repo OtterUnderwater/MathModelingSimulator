@@ -49,6 +49,11 @@
 			PasswordChar="●"
 			Margin="0 20 0 0"
 			Text="{Binding RegVM.Password}"/>
+		<TextBlock
+			Text="{Binding RegVM.Message}"
+			TextAlignment="Center"
+			Foreground="White"
+			Margin="0 0 0 20"/>
 		<Button
 			Content="Зарегистрироваться"
 			HorizontalContentAlignment="Center"

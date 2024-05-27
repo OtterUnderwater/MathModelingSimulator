@@ -1,6 +1,10 @@
 using System.Linq;
 using MathModelingSimulator.Views;
 using MathModelingSimulator.Models;
+using MathModelingSimulator.Function;
+using System.Security.Cryptography;
+using System.Text;
+using System;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -13,8 +17,8 @@ namespace MathModelingSimulator.ViewModels
         private string password = "";
 		public string Password { get => password; set => password = value; }
 
-        private string massage = "";
-		public string Massage { get => massage; set => this.SetProperty(ref massage, value); }
+        private string message = "";
+		public string Message { get => message; set => this.SetProperty(ref message, value); }
 
 		public void GoToRegistration(string name)
 		{
@@ -24,10 +28,12 @@ namespace MathModelingSimulator.ViewModels
 		//Если авторизация/регистрация успешна - открываем меню
 		public void CheckAuthorization(string name)
 		{
-			User? authorization = ContextDb.Users.FirstOrDefault(u => u.Login == Login && u.Password == Password); /*TO DO: Проверка*/
+			Security security = new Security();
+			string passwordHash = security.GetHashPassword(password);
+			User? authorization = ContextDb.Users.FirstOrDefault(u => u.Login == Login && u.Password == passwordHash);
 			if (authorization == null)
 			{
-				Massage = "Такого пользователя нет";
+				Message = "Такого пользователя нет";
 			}
 			else
 			{
