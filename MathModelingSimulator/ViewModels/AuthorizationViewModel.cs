@@ -9,7 +9,7 @@ using System;
 namespace MathModelingSimulator.ViewModels
 {
 
-	public class AuthorizationViewModel : ViewModelBase
+	public class AuthorizationViewModel : MainWindowViewModel
 	{
 		private string login = "";
 		public string Login { get => login; set => login = value; }
@@ -37,8 +37,9 @@ namespace MathModelingSimulator.ViewModels
 			}
 			else
 			{
-				UserId = authorization.Id; //Он тут сохраняет, но в UserAccount оно пустое
-				StartPage.View = new MenuNavigationView();
+                CurrentUser = authorization;
+				UserAccountVM = new UserAccountViewModel();
+                StartPage.View = new MenuNavigationView();
 			}
 		}
 	}

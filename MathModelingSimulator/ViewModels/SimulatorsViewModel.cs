@@ -4,8 +4,8 @@ using ReactiveUI;
 
 namespace MathModelingSimulator.ViewModels
 {
-	public class SimulatorsViewModel : ViewModelBase
-	{
+	public class SimulatorsViewModel : MainWindowViewModel
+    {
 
 	}
 }

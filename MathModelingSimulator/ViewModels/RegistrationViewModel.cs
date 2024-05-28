@@ -10,7 +10,7 @@ using Tmds.DBus.Protocol;
 
 namespace MathModelingSimulator.ViewModels
 {
-    public class RegistrationViewModel : ViewModelBase
+    public class RegistrationViewModel : MainWindowViewModel
     {
         private string surname = "";
         public string Surname { get => surname; set => surname = value; }
@@ -38,6 +38,7 @@ namespace MathModelingSimulator.ViewModels
         {
 			StartPage.View = new AuthorizationView();
 		}
+
 		public void CheckRegistration()
 		{
 			//*TO DO:* if (IsTrueData())

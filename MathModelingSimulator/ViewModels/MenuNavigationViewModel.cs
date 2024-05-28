@@ -5,8 +5,8 @@ using ReactiveUI;
 
 namespace MathModelingSimulator.ViewModels
 {
-	public class MenuNavigationViewModel : ViewModelBase
-	{
+	public class MenuNavigationViewModel : MainWindowViewModel
+    {
 		public void GetPageAccount()
 		{
 			PageSwitch.View = new UserAccountView();

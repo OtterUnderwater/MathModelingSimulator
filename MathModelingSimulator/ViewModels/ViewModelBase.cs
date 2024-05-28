@@ -21,14 +21,17 @@ namespace MathModelingSimulator.ViewModels
 		public static PageSwitcher PageSwitch { get => _pageSwitch; set => _pageSwitch = value; }
 		#endregion
 
-		private Trio33pContext _contextDb = new Trio33pContext();
-		public Trio33pContext ContextDb { get => _contextDb; set => _contextDb = value; }
+		private static readonly Trio33pContext _contextDb = new Trio33pContext();
+        public static Trio33pContext ContextDb { get => _contextDb; }
 
         //Ключ для хэша пароля БД	
-        private readonly byte[] _keyDb = Encoding.UTF8.GetBytes("trioSecretKey");
-		public byte[] KeyDb { get => _keyDb; }
+        private static readonly byte[] _keyDb = Encoding.UTF8.GetBytes("trioSecretKey");
+		public static byte[] KeyDb { get => _keyDb; }
 
-        Guid userId; //Добавила Настя, у неё сомнения, можно ли сюда
-        public Guid UserId { get => userId; set => userId = value; }
+		private static User currentUser = new User();
+        public static User CurrentUser { get => currentUser; set => currentUser = value; }
+
+        private static Guid userId;
+        public static Guid UserId { get => userId; set => userId = value; }
     }
 }
