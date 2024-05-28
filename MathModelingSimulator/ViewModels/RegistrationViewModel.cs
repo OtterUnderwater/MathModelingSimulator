@@ -14,17 +14,19 @@ namespace MathModelingSimulator.ViewModels
     {
         private string surname = "";
         public string Surname { get => surname; set => surname = value; }
+
         private string name = "";
         public string Name { get => name; set => name = value; }
+
         private string patronymic = "";
-        string tmpTelephone;
-        public string Patronymic { 
-            get => patronymic; 
-        }
+        public string Patronymic { get => patronymic; set => patronymic = value; }
+
         private string telephone = "";
         public string Telephone { get => telephone; set => telephone = value; }
+
         private string email = "";
         public string Email { get => email; set => email = value; }
+
         private string login = "";
         public string Login { get => login; set => login = value; }
        
@@ -50,6 +52,7 @@ namespace MathModelingSimulator.ViewModels
 			user.Patronymic = Patronymic;
 			user.Email = Email;
 			user.Login = Login;
+			user.Telephone = Telephone;
 			user.Password = security.GetHashPassword(Password);
 			user.IdRole = 1;
 			ContextDb.Users.Add(user);
