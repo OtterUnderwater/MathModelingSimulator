@@ -37,7 +37,8 @@
 			HorizontalAlignment="Stretch"
 			VerticalAlignment="Stretch"/>
 		
-		<Button Grid.Row="0"
+		<Button 
+			Grid.Row="0"
 			Grid.Column="2"
 			Background="#303238"
 			HorizontalContentAlignment="Center"
@@ -45,7 +46,7 @@
 			Foreground="White"
 			BorderThickness="1"
 			BorderBrush="#09A0B3"
-			Content="Статистика"
+			Content="{Binding MenuVM.BtnName}"
 			Command="{Binding MenuVM.GetPageStatistics}"
 			HorizontalAlignment="Stretch"
 			VerticalAlignment="Stretch"/>

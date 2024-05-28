@@ -22,16 +22,18 @@ namespace MathModelingSimulator.ViewModels
 		#endregion
 
 		private static readonly Trio33pContext _contextDb = new Trio33pContext();
-        public static Trio33pContext ContextDb { get => _contextDb; }
+		public static Trio33pContext ContextDb { get => _contextDb; }
 
-        //Ключ для хэша пароля БД	
-        private static readonly byte[] _keyDb = Encoding.UTF8.GetBytes("trioSecretKey");
+		//Ключ для хэша пароля БД	
+		private static readonly byte[] _keyDb = Encoding.UTF8.GetBytes("trioSecretKey");
 		public static byte[] KeyDb { get => _keyDb; }
 
 		private static User currentUser = new User();
-        public static User CurrentUser { get => currentUser; set => currentUser = value; }
+		public static User CurrentUser { get => currentUser; set => currentUser = value; }
 
-        private static Guid userId;
-        public static Guid UserId { get => userId; set => userId = value; }
+		private static Guid userId;
+		public static Guid UserId { get => userId; set => userId = value; }
+
+		public static int UserRole { get => currentUser.IdRole; }
     }
 }

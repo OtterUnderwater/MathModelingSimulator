@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MathModelingSimulator.Models;
+using MathModelingSimulator.Views;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -41,6 +42,12 @@ namespace MathModelingSimulator.ViewModels
             CurrentUser.Login = Login;
             ContextDb.SaveChanges();
             GetUserAccount();
+        }
+
+        public void LogOut()
+        {
+            ClearAuth();
+            StartPage.View = new AuthorizationView();
         }
 
     }

@@ -16,7 +16,7 @@ namespace MathModelingSimulator.ViewModels
         static RegistrationViewModel registrationViewModel = new RegistrationViewModel();
         public static RegistrationViewModel RegVM { get => registrationViewModel; set => registrationViewModel = value; }
 
-        static MenuNavigationViewModel menuNavigationVM = new MenuNavigationViewModel();
+        static MenuNavigationViewModel menuNavigationVM;
 		public static MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
 
         static UserAccountViewModel userAccountViewModel;
@@ -27,6 +27,10 @@ namespace MathModelingSimulator.ViewModels
 
         #endregion
 
+		public void ClearAuth()
+		{
+			authorizationVM = new AuthorizationViewModel();
+		}
 
         public MainWindowViewModel()
 		{

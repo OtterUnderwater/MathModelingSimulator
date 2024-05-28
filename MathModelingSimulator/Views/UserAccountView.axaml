@@ -101,7 +101,7 @@
 				    BorderBrush="#09A0B3"
 				    Text="{Binding UserAccountVM.Email}"/>
 			</Grid>
-
+			
 			<Button
 				Content="Сохранить"
 				HorizontalContentAlignment="Center"
@@ -109,9 +109,20 @@
 				Background="#09A0B3"
 				Foreground="#FFFFFF"
 				CornerRadius="10"
+				Margin="0 20 0 0"
 				Padding="50 8"
-				Margin="0 30 0 20"
-				Command="{Binding UserAccountVM.SaveUserAccount}"/>
+				Command="{ Binding UserAccountVM.SaveUserAccount }"/>
+
+			<Button
+				Content="Выйти"
+				Background="#09A0B3"
+				Foreground="#FFFFFF"
+				HorizontalAlignment="Right"
+				HorizontalContentAlignment="Left"
+				CornerRadius="10"
+				Margin="0 0 20 0"
+				Padding="50 8"
+				Command="{ Binding UserAccountVM.LogOut }"/>
 
 		</StackPanel>
 	</Border>
