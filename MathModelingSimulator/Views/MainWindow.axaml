@@ -7,7 +7,8 @@
         x:Class="MathModelingSimulator.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="MathModelingSimulator">
+        Title="MathModelingSimulator"
+		Background="#222327">
 
     <Design.DataContext>
         <vm:MainWindowViewModel/>

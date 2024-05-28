@@ -8,36 +8,52 @@
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
 
 	<Grid RowDefinitions="50, *" ColumnDefinitions="*,*,*">
-		<Border 
+
+		<Button
 			Grid.Row="0"
 			Grid.Column="0"
+			Background="#303238"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+			Foreground="White"
+			BorderThickness="1"
 			BorderBrush="#09A0B3"
-			BorderThickness="1" CornerRadius="10">
+			Content="Профиль"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"
+			Command="{Binding MenuVM.GetPageAccount}"/>
 
-			<Button
-				HorizontalAlignment="Stretch"
-				VerticalAlignment="Stretch"
-				Foreground="Red"
-				Content="Профиль"
-				Command="{Binding MenuVM.GetPageAccount}"/>
-			
-		</Border>
+		<Button 
+			Grid.Row="0"
+			Grid.Column="1"
+			Background="#303238"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+			Foreground="White"
+			BorderThickness="1"
+			BorderBrush="#09A0B3"
+			Content="Тренажеры"
+			Command="{Binding MenuVM.GetPageSimulators}"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"/>
 		
 		<Button Grid.Row="0"
-				Grid.Column="1"
-				Content="Тренажеры"
-				Command="{Binding MenuVM.GetPageSimulators}"
-				HorizontalAlignment="Stretch"
-				VerticalAlignment="Stretch"/>
-		<Button Grid.Row="0"
 			Grid.Column="2"
+			Background="#303238"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+			Foreground="White"
+			BorderThickness="1"
+			BorderBrush="#09A0B3"
 			Content="Статистика"
 			Command="{Binding MenuVM.GetPageStatistics}"
-				HorizontalAlignment="Stretch"
-				VerticalAlignment="Stretch"/>
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"/>
+
 		<ScrollViewer Grid.Row="1" Grid.ColumnSpan="3">
 			<UserControl Content="{Binding PageSwitch.View}"/>
 		</ScrollViewer>
+		
 	</Grid>
 
 </UserControl>
