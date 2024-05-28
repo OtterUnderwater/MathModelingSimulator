@@ -111,7 +111,7 @@
 				CornerRadius="10"
 				Padding="50 8"
 				Margin="0 30 0 20"
-				Command="{Binding UserAccountVM.SaveUserAccount}"/>
+				Command="{Binding UserAccountVM.GetUserAccount}"/>
 
 		</StackPanel>
 	</Border>

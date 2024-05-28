@@ -1,5 +1,6 @@
 ﻿using MathModelingSimulator.Views;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace MathModelingSimulator.ViewModels
 {   
@@ -23,6 +24,7 @@ namespace MathModelingSimulator.ViewModels
 
         SimulatorsViewModel simulatorsViewModel = new SimulatorsViewModel();
         public SimulatorsViewModel SimulatorsVM { get => simulatorsViewModel; set => simulatorsViewModel = value; }
+
         #endregion
 
 
@@ -30,7 +32,6 @@ namespace MathModelingSimulator.ViewModels
 		{
 			StartPage.View = new AuthorizationView();
 			PageSwitch.View = new SimulatorsView();
-
 		}
 	}
 }

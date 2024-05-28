@@ -20,7 +20,7 @@ namespace MathModelingSimulator.ViewModels
         private string message = "";
 		public string Message { get => message; set => this.SetProperty(ref message, value); }
 
-		public void GoToRegistration()
+        public void GoToRegistration()
 		{
 			StartPage.View = new RegistrationView();
 		}
@@ -37,6 +37,7 @@ namespace MathModelingSimulator.ViewModels
 			}
 			else
 			{
+				UserId = authorization.Id; //Он тут сохраняет, но в UserAccount оно пустое
 				StartPage.View = new MenuNavigationView();
 			}
 		}

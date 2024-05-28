@@ -10,7 +10,7 @@ namespace MathModelingSimulator.ViewModels
 		public void GetPageAccount()
 		{
 			PageSwitch.View = new UserAccountView();
-		}
+        }
 
 		public void GetPageSimulators()
 		{
