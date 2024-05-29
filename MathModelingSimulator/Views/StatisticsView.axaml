@@ -5,6 +5,14 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MathModelingSimulator.Views.StatisticsView"
 			 x:DataType="vm:MainWindowViewModel"
-			 xmlns:vm="using:MathModelingSimulator.ViewModels">
-	Welcome to StatisticsView!
+			 xmlns:vm="using:MathModelingSimulator.ViewModels"
+			 xmlns:liveChart="using:LiveChartsCore.SkiaSharpView.Avalonia">
+	
+	<Grid RowDefinitions="auto,auto" ColumnDefinitions="*">
+		<Button Grid.Row="0" Grid.Column="0" Content="Диалоговое окошечко" Command="{Binding StatisticsVM.doo}"/>
+		<Panel MaxWidth="300" MaxHeight="300" Grid.Row="1" Grid.Column="0">
+			<liveChart:PieChart Series="{Binding StatisticsVM.Series}"/>
+		</Panel>
+	</Grid>
+	
 </UserControl>
