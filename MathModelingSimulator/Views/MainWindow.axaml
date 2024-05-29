@@ -10,7 +10,7 @@
         Title="MathModelingSimulator"
 		Background="#222327">
 
-    <Design.DataContext>
+    <Design.DataContext>	
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 	

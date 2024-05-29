@@ -34,15 +34,6 @@ namespace MathModelingSimulator.ViewModels
 					Fill = (IPaint<SkiaSharpDrawingContext>) new SolidColorPaint(SKColor.Parse("#7B69E1"))
 				}
 			};		
-		}
-
-		public void doo()
-		{
-			//Способ со встроенным окном Авалонией
-			/* var box = MessageBoxManager
-			.GetMessageBoxStandard("Caption", "Are you sure you would like to delete appender_replace_page_1?",
-				ButtonEnum.YesNo);
-			var result = box.ShowAsync();*/
-		}
+		}		
 	}
 }
