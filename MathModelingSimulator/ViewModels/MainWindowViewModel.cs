@@ -14,8 +14,8 @@ namespace MathModelingSimulator.ViewModels
 		static AuthorizationViewModel? authorizationVM = new AuthorizationViewModel();
 		public static AuthorizationViewModel? AuthVM { get => authorizationVM; set => authorizationVM = value; }
 
-        static RegistrationViewModel registrationViewModel = new RegistrationViewModel();
-        public static RegistrationViewModel RegVM { get => registrationViewModel; set => registrationViewModel = value; }
+        static RegistrationViewModel? registrationViewModel = new RegistrationViewModel();
+        public static RegistrationViewModel? RegVM { get => registrationViewModel; set => registrationViewModel = value; }
 
         static MenuNavigationViewModel? menuNavigationVM;
 		public static MenuNavigationViewModel? MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
@@ -29,9 +29,12 @@ namespace MathModelingSimulator.ViewModels
 		static SimulatorsViewModel? simulatorsViewModel;
 		public static SimulatorsViewModel? SimulatorsVM { get => simulatorsViewModel; set => simulatorsViewModel = value; }
 
-		#endregion
+        static TaskSimulatorsViewModel? taskSimulatorsViewModel;
+        public static TaskSimulatorsViewModel? TaskSimulatorsVM { get => taskSimulatorsViewModel; set => taskSimulatorsViewModel = value; }
 
-		public void ClearAuth()
+        #endregion
+
+        public void ClearAuth()
 		{
 			authorizationVM = new AuthorizationViewModel();
 		}
