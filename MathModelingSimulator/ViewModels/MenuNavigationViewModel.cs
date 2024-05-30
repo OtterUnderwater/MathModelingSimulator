@@ -15,8 +15,12 @@ namespace MathModelingSimulator.ViewModels
 			if (UserRole == 1)
 			{
 				btnName = "—татистика учеников";
-			}
-		}
+            }
+            UserAccountVM = new UserAccountViewModel();
+            StatisticsVM = new StatisticsViewModel();
+            SimulatorsVM = new SimulatorsViewModel();
+            PageSwitch.View = new SimulatorsView();
+        }
 
 		public static string BtnName { get => btnName; set => btnName = value; }
 
@@ -33,7 +37,6 @@ namespace MathModelingSimulator.ViewModels
 		public void GetPageStatistics()
 		{
 			//ѕереходе на страницу провер€ем что есть статистика у ученика
-			StatisticsVM = new StatisticsViewModel();
 			PageSwitch.View = new StatisticsView();
 		}
 	}

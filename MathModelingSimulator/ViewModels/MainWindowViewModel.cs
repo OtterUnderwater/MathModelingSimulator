@@ -9,24 +9,25 @@ namespace MathModelingSimulator.ViewModels
 	/// </summary>
 	public class MainWindowViewModel : ViewModelBase
 	{
+
 		#region ViewModel-objects
-		static AuthorizationViewModel authorizationVM = new AuthorizationViewModel();
-		public static AuthorizationViewModel AuthVM { get => authorizationVM; set => authorizationVM = value; }
+		static AuthorizationViewModel? authorizationVM = new AuthorizationViewModel();
+		public static AuthorizationViewModel? AuthVM { get => authorizationVM; set => authorizationVM = value; }
 
         static RegistrationViewModel registrationViewModel = new RegistrationViewModel();
         public static RegistrationViewModel RegVM { get => registrationViewModel; set => registrationViewModel = value; }
 
-        static MenuNavigationViewModel menuNavigationVM;
-		public static MenuNavigationViewModel MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
+        static MenuNavigationViewModel? menuNavigationVM;
+		public static MenuNavigationViewModel? MenuVM { get => menuNavigationVM; set => menuNavigationVM = value; }
 
-        static UserAccountViewModel userAccountViewModel;
-        public static UserAccountViewModel UserAccountVM { get => userAccountViewModel; set => userAccountViewModel = value; }
+        static UserAccountViewModel? userAccountViewModel;
+        public static UserAccountViewModel? UserAccountVM { get => userAccountViewModel; set => userAccountViewModel = value; }
 
-		static StatisticsViewModel statisticsViewModel;
-		public static StatisticsViewModel StatisticsVM { get => statisticsViewModel; set => statisticsViewModel = value; }
+		static StatisticsViewModel? statisticsViewModel;
+		public static StatisticsViewModel? StatisticsVM { get => statisticsViewModel; set => statisticsViewModel = value; }
 
-		static SimulatorsViewModel simulatorsViewModel = new SimulatorsViewModel();
-		public static SimulatorsViewModel SimulatorsVM { get => simulatorsViewModel; set => simulatorsViewModel = value; }
+		static SimulatorsViewModel? simulatorsViewModel;
+		public static SimulatorsViewModel? SimulatorsVM { get => simulatorsViewModel; set => simulatorsViewModel = value; }
 
 		#endregion
 
@@ -38,7 +39,6 @@ namespace MathModelingSimulator.ViewModels
         public MainWindowViewModel()
 		{
 			StartPage.View = new AuthorizationView();
-			PageSwitch.View = new SimulatorsView();
 		}
 	}
 }

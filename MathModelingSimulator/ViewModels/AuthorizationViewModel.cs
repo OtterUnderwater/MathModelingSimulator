@@ -37,14 +37,11 @@ namespace MathModelingSimulator.ViewModels
 			}
 			else
 			{
-                CurrentUser = authorization;
-				UserAccountVM = new UserAccountViewModel();
-				MenuVM = new MenuNavigationViewModel();
+                CurrentUser = authorization;            
+                MenuVM = new MenuNavigationViewModel();
                 StartPage.View = new MenuNavigationView();
-				//Тренажер определяется после авторизации пользователя
-				//SimulatorsVM = new SimulatorsViewModel();
-				//PageSwitch.View = new SimulatorsView();
-			}
+                PageSwitch.View = new SimulatorsView();
+            }
 		}
 	}
 }

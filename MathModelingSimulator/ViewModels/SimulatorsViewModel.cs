@@ -24,7 +24,7 @@ namespace MathModelingSimulator.ViewModels
 		/// </summary>
 		public SimulatorsViewModel()
 		{
-			/*if (ContextDb.Roles.First(r => r.IdRole == CurrentUser.IdRole).Role1 == "Преподаватель")
+			if (ContextDb.Roles.First(r => r.IdRole == CurrentUser.IdRole).Role1 == "Преподаватель")
 			{
 				IsVisibleTeacher = true;
 				IsVisibleStudent = false;
@@ -33,7 +33,7 @@ namespace MathModelingSimulator.ViewModels
 			{
 				IsVisibleTeacher = false;
 				IsVisibleStudent = true;
-			}*/
+			}
 		}
 	}
 }
