@@ -22,7 +22,6 @@ namespace MathModelingSimulator.ViewModels
         public string Login { get => login; set => this.SetProperty(ref login, value); }
         public string Email { get => email; set => this.SetProperty(ref email, value); }
 
-        //Во-первых, как это сразу при запуске окна запускать. Сейчас оно при нажатии на кнопку работает только
         public void GetUserAccount()
         {
             PhoneNum = CurrentUser.Telephone;

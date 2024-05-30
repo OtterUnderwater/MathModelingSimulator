@@ -9,7 +9,7 @@
 	
 	<ScrollViewer>
 
-		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
 
 			<TextBlock
 				Text="Регистрация"
@@ -29,6 +29,14 @@
 				BorderBrush="#09A0B3"
 				Margin="0 20 0 0"
 				Text="{Binding RegVM.Surname}"/>
+
+			<TextBlock
+				FontSize="14"
+				Foreground="#FFFFFF"
+				Margin="15 10 0 0"
+				IsVisible="{Binding RegVM.IsVisibleMessageSurname}"
+				Text="{Binding RegVM.MessageSurname}"/>
+			
 			<TextBox
 				Watermark="Имя"
 				Name="name"
@@ -41,6 +49,12 @@
 				BorderBrush="#09A0B3"
 				Margin="0 20 0 0"
 				Text="{Binding RegVM.Name}"/>
+			<TextBlock
+				FontSize="14"
+				Foreground="#FFFFFF"
+				Margin="15 10 0 0"
+				IsVisible="{Binding RegVM.IsVisibleMessageName}"
+				Text="{Binding RegVM.MessageName}"/>
 			<TextBox
 				Watermark="Отчество"
 				Name="patronymic"
@@ -53,8 +67,9 @@
 				BorderBrush="#09A0B3"
 				Margin="0 20 0 0"
 				Text="{Binding RegVM.Patronymic}"/>
+			
 			<TextBox
-				Watermark="Телефон"
+				Watermark="+7ХХХХХХХХХХ"
 				Name="telephone"
 				FontSize="14"
 				Background="#303238"
@@ -64,6 +79,12 @@
 				CornerRadius="10"
 				BorderBrush="#09A0B3"
 				Margin="0 20 0 0"
+				Text="{Binding RegVM.Telephone}"/>
+			<TextBlock
+				FontSize="14"
+				Foreground="#FFFFFF"
+				Margin="15 10 0 -10"
+				IsVisible="{Binding RegVM.Telephone}"
 				Text="{Binding RegVM.Telephone}"/>
 			<TextBox
 				Watermark="Почта"
@@ -77,6 +98,12 @@
 				BorderBrush="#09A0B3"
 				Margin="0 20 0 0"
 				Text="{Binding RegVM.Email}"/>
+			<TextBlock
+				FontSize="14"
+				Foreground="#FFFFFF"
+				Margin="15 10 0 -10"
+				IsVisible="{Binding RegVM.IsVisibleMessageEmail}"
+				Text="{Binding RegVM.Email}"/>
 			<TextBox
 				Watermark="Логин"
 				Name="login"
@@ -88,6 +115,12 @@
 				CornerRadius="10"
 				BorderBrush="#09A0B3"
 				Margin="0 20 0 0"
+				Text="{Binding RegVM.Login}"/>
+			<TextBlock
+				FontSize="14"
+				Foreground="#FFFFFF"
+				Margin="15 10 0 -10"
+				IsVisible="{Binding RegVM.IsVisibleMessageLogin}"
 				Text="{Binding RegVM.Login}"/>
 			<TextBox
 				Watermark="Пароль"
@@ -101,7 +134,13 @@
 				BorderBrush="#09A0B3"
 				PasswordChar="*"
 				Margin="0 20 0 0"
-				Text="{Binding RegVM.Password}"/>		
+				Text="{Binding RegVM.Password}"/>
+			<TextBlock
+				FontSize="14"
+				Foreground="#FFFFFF"
+				Margin="15 10 0 -10"
+				IsVisible="{Binding RegVM.IsVisibleMessagePassword}"
+				Text="{Binding RegVM.Password}"/>
 			<ComboBox
 				ItemsSource="{Binding RegVM.Roles}"				
 				SelectedValue="{Binding RegVM.SelectRole}"
@@ -115,10 +154,7 @@
 				CornerRadius="10"
 				BorderBrush="#09A0B3"
 				Margin="0 20 0 0"/>
-			
-			<TextBlock
-				Text="{Binding RegVM.Message}"/>		
-			
+				
 			<Button
 				Content="Зарегистрироваться"
 				HorizontalContentAlignment="Center"

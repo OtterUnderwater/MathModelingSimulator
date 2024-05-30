@@ -12,7 +12,6 @@ namespace MathModelingSimulator.Function
 			byte[] data = Encoding.UTF8.GetBytes(password);
 			HMACSHA256 sha = new HMACSHA256(KeyDb);
 			byte[] result = sha.ComputeHash(data);
-            Console.WriteLine(result);
             return Convert.ToBase64String(result);
 		}
 	}
