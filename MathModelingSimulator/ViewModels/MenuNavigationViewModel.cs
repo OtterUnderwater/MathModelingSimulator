@@ -32,6 +32,8 @@ namespace MathModelingSimulator.ViewModels
 
 		public void GetPageStatistics()
 		{
+			//Переходе на страницу проверяем что есть статистика у ученика
+			StatisticsVM = new StatisticsViewModel();
 			PageSwitch.View = new StatisticsView();
 		}
 	}

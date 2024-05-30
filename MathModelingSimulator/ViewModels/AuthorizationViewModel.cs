@@ -41,6 +41,9 @@ namespace MathModelingSimulator.ViewModels
 				UserAccountVM = new UserAccountViewModel();
 				MenuVM = new MenuNavigationViewModel();
                 StartPage.View = new MenuNavigationView();
+				//Тренажер определяется после авторизации пользователя
+				//SimulatorsVM = new SimulatorsViewModel();
+				//PageSwitch.View = new SimulatorsView();
 			}
 		}
 	}

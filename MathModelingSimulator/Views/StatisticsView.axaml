@@ -8,8 +8,10 @@
 			 xmlns:vm="using:MathModelingSimulator.ViewModels"
 			 xmlns:liveChart="using:LiveChartsCore.SkiaSharpView.Avalonia">
 
-	<Panel MaxWidth="300" MaxHeight="300" Grid.Row="1" Grid.Column="0">
-		<liveChart:PieChart Series="{Binding StatisticsVM.Series}"/>
-	</Panel>
+	<StackPanel>
+		<Panel MinHeight="200" MinWidth="200">
+			<liveChart:PieChart Series="{Binding StatisticsVM.Series}"/>
+		</Panel>
+	</StackPanel>
 
 </UserControl>

@@ -2,6 +2,7 @@
 using MathModelingSimulator.Models;
 using MathModelingSimulator.Views;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -12,14 +13,15 @@ namespace MathModelingSimulator.ViewModels
 {
     public class RegistrationViewModel : MainWindowViewModel
     {
-        private string surname = "";
+		#region PropertyObjects
+		private string surname = "";
         public string Surname { get => surname; set => surname = value; }
 
         private string name = "";
         public string Name { get => name; set => name = value; }
 
-        private string patronymic = "";
-        public string Patronymic { get => patronymic; set => patronymic = value; }
+        private string? patronymic;
+        public string? Patronymic { get => patronymic; set => patronymic = value; }
 
         private string telephone = "";
         public string Telephone { get => telephone; set => telephone = value; }
@@ -35,40 +37,51 @@ namespace MathModelingSimulator.ViewModels
 
         private string message = "";
         public string Message { get => message; set => this.SetProperty(ref message, value); }
+		public List<Role> Roles { get => ContextDb.Roles.ToList(); }
+
+		private Role selectRole = ContextDb.Roles.First();
+		public Role SelectRole { get => selectRole; set => selectRole = value; }
+
+		#endregion
 
 		public void GoToAuthorization()
-        {
+		{
 			StartPage.View = new AuthorizationView();
 		}
 
 		public void CheckRegistration()
 		{
-			//*TO DO:* if (IsTrueData())
-			Security security = new Security();
-			User user = new User();
-			user.Id = Guid.NewGuid();
-			user.Surname = Surname;
-			user.Name = Name;
-			user.Patronymic = Patronymic;
-			user.Email = Email;
-			user.Login = Login;
-			user.Telephone = Telephone;
-			user.Password = security.GetHashPassword(Password);
-			user.IdRole = 1;
-			ContextDb.Users.Add(user);
-			ContextDb.SaveChanges();
-			StartPage.View = new AuthorizationView();
+			if (IsTrueData())
+            {
+				Security security = new Security();
+				User user = new User();
+				user.Id = Guid.NewGuid();
+				user.Surname = Surname;
+				user.Name = Name;
+				user.Patronymic = Patronymic;
+				user.Email = Email;
+				user.Login = Login;
+				user.Telephone = Telephone;
+				user.Password = security.GetHashPassword(Password);
+				user.IdRole = SelectRole.IdRole;
+				ContextDb.Users.Add(user);
+				ContextDb.SaveChanges();
+				StartPage.View = new AuthorizationView();
+			}
 		}
 
+		//*TO DO:* Это стоит вынести в класс функционала,
+		//так как в профиле пользователя нам тоже нужна проверка корректности телефона и ФИО
+		//А еще желательно сделать информативное уведомление об ошибках, а то фигня уведомления у вас
 		private bool IsTrueData() {
             Regex FI = new Regex("^([А-Я]|[а-я])+$");
             Regex mail = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
-            Regex password = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
-            if (FI.IsMatch(Surname) && FI.IsMatch(Name))
+            Regex password = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+			if (FI.IsMatch(Surname) && FI.IsMatch(Name))
             {
                 if (mail.IsMatch(Email))
                 {
-                    User? nullLogin = ContextDb.Users.FirstOrDefault(u => u.Login == Login); /*TO DO: Проверка*/
+                    User? nullLogin = ContextDb.Users.FirstOrDefault(u => u.Login == Login);
                     if (nullLogin == null)
                     {
                         if (password.IsMatch(Password))

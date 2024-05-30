@@ -36,7 +36,7 @@
 				Padding="15 8"
 				CornerRadius="10"
 				BorderBrush="#09A0B3"
-				PasswordChar="●"
+				PasswordChar="*"
 				Margin="0 20 0 0"
 				Text="{Binding AuthVM.Password}"/>
 			<TextBlock Text="{Binding AuthVM.Message}"/>

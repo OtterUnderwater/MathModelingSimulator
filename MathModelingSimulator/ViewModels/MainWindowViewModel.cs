@@ -21,14 +21,14 @@ namespace MathModelingSimulator.ViewModels
 
         static UserAccountViewModel userAccountViewModel;
         public static UserAccountViewModel UserAccountVM { get => userAccountViewModel; set => userAccountViewModel = value; }
-		
-		static StatisticsViewModel statisticsViewModel = new StatisticsViewModel();
+
+		static StatisticsViewModel statisticsViewModel;
 		public static StatisticsViewModel StatisticsVM { get => statisticsViewModel; set => statisticsViewModel = value; }
 
 		static SimulatorsViewModel simulatorsViewModel = new SimulatorsViewModel();
-        public static SimulatorsViewModel SimulatorsVM { get => simulatorsViewModel; set => simulatorsViewModel = value; }
+		public static SimulatorsViewModel SimulatorsVM { get => simulatorsViewModel; set => simulatorsViewModel = value; }
 
-        #endregion
+		#endregion
 
 		public void ClearAuth()
 		{

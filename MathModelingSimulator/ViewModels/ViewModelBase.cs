@@ -31,9 +31,6 @@ namespace MathModelingSimulator.ViewModels
 		private static User currentUser = new User();
 		public static User CurrentUser { get => currentUser; set => currentUser = value; }
 
-		private static Guid userId;
-		public static Guid UserId { get => userId; set => userId = value; }
-
 		public static int UserRole { get => currentUser.IdRole; }
     }
 }

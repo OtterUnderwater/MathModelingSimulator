@@ -99,9 +99,26 @@
 				Padding="15 8"
 				CornerRadius="10"
 				BorderBrush="#09A0B3"
-				PasswordChar="●"
+				PasswordChar="*"
 				Margin="0 20 0 0"
-				Text="{Binding RegVM.Password}"/>
+				Text="{Binding RegVM.Password}"/>		
+			<ComboBox
+				ItemsSource="{Binding RegVM.Roles}"				
+				SelectedValue="{Binding RegVM.SelectRole}"
+				DisplayMemberBinding="{Binding Path=Role1}"
+				FontSize="14"
+				Background="#303238"
+				Foreground="#FFFFFF"
+				VerticalContentAlignment="Stretch"
+				HorizontalAlignment="Stretch"
+				Padding="15 8"
+				CornerRadius="10"
+				BorderBrush="#09A0B3"
+				Margin="0 20 0 0"/>
+			
+			<TextBlock
+				Text="{Binding RegVM.Message}"/>		
+			
 			<Button
 				Content="Зарегистрироваться"
 				HorizontalContentAlignment="Center"

@@ -11,7 +11,8 @@
 
 		<StackPanel>
 
-			<StackPanel HorizontalAlignment="Stretch" Margin="100 0" IsVisible="False" Name="SPStudent">
+			<!--Для студента-->
+			<StackPanel HorizontalAlignment="Stretch" Margin="100 0" IsVisible="{Binding SimulatorsVM.IsVisibleStudent}" Name="SPStudent">
 
 				<Border
 					BorderBrush="#000000"
@@ -115,112 +116,114 @@
 
 			</StackPanel>
 
-			<Border Margin="100 40" Padding="30 40" IsVisible="True" Name="SPTeacher" Background="#303238" CornerRadius="10">
+			<!--Для преподавателя-->
+			<StackPanel IsVisible="{Binding SimulatorsVM.IsVisibleTeacher}">
+				<Border Margin="100 40" Padding="30 40" IsVisible="True" Name="SPTeacher" Background="#303238" CornerRadius="10">
 
-				<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-					<Grid RowDefinitions="auto" ColumnDefinitions="auto,*">
-						<TextBlock
-							Grid.Row="0"
-							Grid.Column="0"
-							Text="Все задания"
-							FontWeight="Bold"
-							FontSize="20"
-							HorizontalAlignment="Left" />
+						<Grid RowDefinitions="auto" ColumnDefinitions="auto,*">
+							<TextBlock
+								Grid.Row="0"
+								Grid.Column="0"
+								Text="Все задания"
+								FontWeight="Bold"
+								FontSize="20"
+								HorizontalAlignment="Left" />
 
-						<Button
-							Grid.Row="0"
-							Grid.Column="1"
-							Content="Создать задание для тренажёра"
-							Foreground="#FFFFFF"
-							Background="#09A0B3"
-							CornerRadius="10"
-							HorizontalAlignment="Right"
-							Padding="50 8"
-							Command="{ Binding  }"/>
-					</Grid>
+							<Button
+								Grid.Row="0"
+								Grid.Column="1"
+								Content="Создать задание для тренажёра"
+								Foreground="#FFFFFF"
+								Background="#09A0B3"
+								CornerRadius="10"
+								HorizontalAlignment="Right"
+								Padding="50 8"
+								Command="{ Binding  }"/>
+						</Grid>
 
-					<Grid RowDefinitions="auto" ColumnDefinitions="auto,auto,auto,auto" Margin="0 20 0 0">
-						<TextBlock
-							Grid.Row="0"
-							Grid.Column="0"
-							Text="Выберите номер задания"
-							Margin="0 0 70 0"
-							FontSize="20"
-							VerticalAlignment="Center"
-							HorizontalAlignment="Left" />
+						<Grid RowDefinitions="auto" ColumnDefinitions="auto,auto,auto,auto" Margin="0 20 0 0">
+							<TextBlock
+								Grid.Row="0"
+								Grid.Column="0"
+								Text="Выберите номер задания"
+								Margin="0 0 70 0"
+								FontSize="20"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Left" />
 
-						<ComboBox
-							Grid.Row="0"
-							Grid.Column="1"
-							Margin="0 0 25 0"
-							CornerRadius="10"
-							Foreground="#FFFFFF"
-							Background="#303238"
-							BorderBrush="#09A0B3"
-							BorderThickness="1"
-							Padding="20 8"
-							Name="cbMonth" 
-							FontSize ="18" 
-							SelectedIndex="0"
-							HorizontalAlignment="Right">
-							
-							<ComboBoxItem>1</ComboBoxItem>
-							<ComboBoxItem>2</ComboBoxItem>
-							<ComboBoxItem>3</ComboBoxItem>
-							
-						</ComboBox>
+							<ComboBox
+								Grid.Row="0"
+								Grid.Column="1"
+								Margin="0 0 25 0"
+								CornerRadius="10"
+								Foreground="#FFFFFF"
+								Background="#303238"
+								BorderBrush="#09A0B3"
+								BorderThickness="1"
+								Padding="20 8"
+								Name="cbMonth"
+								FontSize ="18"
+								SelectedIndex="0"
+								HorizontalAlignment="Right">
+
+								<ComboBoxItem>1</ComboBoxItem>
+								<ComboBoxItem>2</ComboBoxItem>
+								<ComboBoxItem>3</ComboBoxItem>
+
+							</ComboBox>
 
 
-						<ComboBox
-							Grid.Row="0"
-							Grid.Column="2"
-							CornerRadius="10"
-							Foreground="#FFFFFF"
-							Background="#303238"
-							Margin="0 0 25 0"
-							BorderBrush="#09A0B3"
-							BorderThickness="1"
-							Padding="20 8"
-							Name="cbMonth2"
-							FontSize ="18"
-							SelectedIndex="0"
-							HorizontalAlignment="Right">
+							<ComboBox
+								Grid.Row="0"
+								Grid.Column="2"
+								CornerRadius="10"
+								Foreground="#FFFFFF"
+								Background="#303238"
+								Margin="0 0 25 0"
+								BorderBrush="#09A0B3"
+								BorderThickness="1"
+								Padding="20 8"
+								Name="cbMonth2"
+								FontSize ="18"
+								SelectedIndex="0"
+								HorizontalAlignment="Right">
 
-							<ComboBoxItem>Удалить</ComboBoxItem>
-							<ComboBoxItem>Изменить</ComboBoxItem>
+								<ComboBoxItem>Удалить</ComboBoxItem>
+								<ComboBoxItem>Изменить</ComboBoxItem>
 
-						</ComboBox>
+							</ComboBox>
 
-						<Button
-							Grid.Row="0"
-							Grid.Column="3"
-							Content="Удалить"
-							Foreground="#FFFFFF"
-							Background="#09A0B3"
-							CornerRadius="10"
+							<Button
+								Grid.Row="0"
+								Grid.Column="3"
+								Content="Удалить"
+								Foreground="#FFFFFF"
+								Background="#09A0B3"
+								CornerRadius="10"
+								HorizontalAlignment="Stretch"
+								Padding="50 8"
+								Command="{ Binding  }"/>
+
+						</Grid>
+
+						<Grid
+							ColumnDefinitions="*"
+							RowDefinitions="*"
 							HorizontalAlignment="Stretch"
-							Padding="50 8"
-							Command="{ Binding  }"/>
-						
-					</Grid>
+							Margin="0 20 0 40">
 
-					<Grid
-						ColumnDefinitions="*"
-						RowDefinitions="*"
-						HorizontalAlignment="Stretch"
-						Margin="0 20 0 40">
+							<Border Height="1" Grid.Column="0" Grid.Row="0" Background="#09A0B3"></Border>
 
-						<Border Height="1" Grid.Column="0" Grid.Row="0" Background="#09A0B3"></Border>
+						</Grid>
 
-					</Grid>
 
-					
-				</StackPanel>
-				
-			</Border>
-	
-			
+					</StackPanel>
+
+				</Border>
+			</StackPanel>
+
 		</StackPanel>
 
 	</ScrollViewer>
