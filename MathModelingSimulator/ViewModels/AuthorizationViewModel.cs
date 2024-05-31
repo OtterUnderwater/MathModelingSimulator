@@ -39,7 +39,7 @@ namespace MathModelingSimulator.ViewModels
 			{
                 CurrentUser = authorization;            
                 MenuVM = new MenuNavigationViewModel();
-                StartPage.View = new MenuNavigationView();
+				StartPage.View = new MenuNavigationView();           
                 PageSwitch.View = new SimulatorsView();
             }
 		}

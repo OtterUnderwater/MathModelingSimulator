@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using MathModelingSimulator.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace MathModelingSimulator.Navigation
 {
@@ -18,9 +19,9 @@ namespace MathModelingSimulator.Navigation
 			get => view;
 			set
 			{
-				view = value;
-				OnPropertyChanged(nameof(View));
-			}
-		}
+                view = value;
+                OnPropertyChanged(nameof(View));
+            }
+        }
 	}
 }
