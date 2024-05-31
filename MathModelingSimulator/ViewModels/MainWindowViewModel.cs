@@ -41,7 +41,10 @@ namespace MathModelingSimulator.ViewModels
 		{
 			authorizationVM = new AuthorizationViewModel();
 		}
-
+        public void ClearRegistration()
+        {
+            registrationViewModel = new RegistrationViewModel();
+        }
         public MainWindowViewModel()
 		{
 			StartPage.View = new AuthorizationView();

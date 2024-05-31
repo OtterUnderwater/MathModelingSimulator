@@ -33,7 +33,7 @@ namespace MathModelingSimulator.ViewModels
 			User? authorization = ContextDb.Users.FirstOrDefault(u => u.Login == Login && u.Password == passwordHash);
 			if (authorization == null)
 			{
-				Message = "Такого пользователя нет";
+				Message = "Имя пользователя или пароль не правильный.";
 			}
 			else
 			{

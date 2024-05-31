@@ -51,9 +51,20 @@ namespace MathModelingSimulator.Function
                
             }
         }
-        public (bool isTrueField, string message) GetRegularName(string Name)
+        public (bool isTrueField, string message) GetRegularSurnameName(string Name,string Surname)
         {
             
+            if (FI.IsMatch(Name) && FI.IsMatch(Surname))
+            {
+                return (true, "");
+            }
+            else
+            {
+                return (false, "Имя и фамилия должна быть написана символами русского алфавита");
+            }
+        }
+        public (bool isTrueField, string message) GetRegularName(string Name)
+        {
             if (FI.IsMatch(Name))
             {
                 return (true, "");

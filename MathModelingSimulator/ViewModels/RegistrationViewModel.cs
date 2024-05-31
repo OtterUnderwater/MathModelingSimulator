@@ -76,7 +76,7 @@ namespace MathModelingSimulator.ViewModels
 
 		public void CheckRegistration()
 		{
-            
+            //IsTrueData())
             if (IsTrueData())
             {
 				Security security = new Security();
@@ -92,13 +92,10 @@ namespace MathModelingSimulator.ViewModels
 				user.IdRole = SelectRole.IdRole;
 				ContextDb.Users.Add(user);
 				ContextDb.SaveChanges();
-				StartPage.View = new AuthorizationView();
+                ClearRegistration();
+                StartPage.View = new AuthorizationView();
 			}
 		}
-
-        //*TO DO:* Это стоит вынести в класс функционала,
-        //так как в профиле пользователя нам тоже нужна проверка корректности телефона и ФИО
-        //А еще желательно сделать информативное уведомление об ошибках, а то фигня уведомления у вас
         private bool IsTrueData()
         {
             Regular regular = new Regular();
