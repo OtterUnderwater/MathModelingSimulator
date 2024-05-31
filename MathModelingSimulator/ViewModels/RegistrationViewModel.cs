@@ -4,6 +4,7 @@ using MathModelingSimulator.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -101,7 +102,7 @@ namespace MathModelingSimulator.ViewModels
         private bool IsTrueData()
         {
             Regular regular = new Regular();
-            
+            (bool isTrueField, string message) result;
             if (
                 regular.GetRegularSurname(Surname).isTrueField &&
                 regular.GetRegularName(Name).isTrueField &&
@@ -114,34 +115,32 @@ namespace MathModelingSimulator.ViewModels
                 return true;
             }
             else {
-                (bool isTrueField, string message, bool isVisible) resultName = regular.GetRegularName(Name);
-                IsVisibleMessageName = resultName.isVisible;
-                MessageName = resultName.message;
+                result = regular.GetRegularSurname(Surname);
+                IsVisibleMessageSurname = !result.isTrueField;
+                MessageSurname = result.message;
 
-                (bool isTrueField, string message, bool isVisible) resultSurname = regular.GetRegularSurname(Surname);
-                isVisibleMessageSurname = resultSurname.isVisible;
-                MessageSurname = resultSurname.message;
+                result = regular.GetRegularName(Name);
+                IsVisibleMessageName = !result.isTrueField;
+                MessageName = result.message;
 
-                (bool isTrueField, string message, bool isVisible) resultTelephone = regular.GetRegularTelephone(Telephone);
-                isVisibleMessageTelephone = resultTelephone.isVisible;
-                MessageTelephone = resultTelephone.message;
+                result = regular.GetRegularTelephone(Telephone);
+                IsVisibleMessageTelephone = !result.isTrueField;
+                MessageTelephone = result.message;
 
-                (bool isTrueField, string message, bool isVisible) resultEmail = regular.GetRegularEmail(Email);
-                isVisibleMessageEmail = resultEmail.isVisible;
-                MessageEmail = resultEmail.message;
+                result = regular.GetRegularEmail(Email);
+                IsVisibleMessageEmail = !result.isTrueField;
+                MessageEmail = result.message;
 
-                (bool isTrueField, string message, bool isVisible) resultLogin = regular.GetRegularLogin(Login,ContextDb);
-                isVisibleMessageLogin = resultLogin.isVisible;
-                MessageLogin = resultLogin.message;
+                result = regular.GetRegularLogin(Login, ContextDb);
+                IsVisibleMessageLogin = !result.isTrueField;
+                MessageLogin = result.message;
 
-                (bool isTrueField, string message, bool isVisible) resultPassword = regular.GetRegularPassword(Password);
-                isVisibleMessagePassword = resultPassword.isVisible;
-                MessagePassword = resultPassword.message;
+                result = regular.GetRegularPassword(Password);
+                IsVisibleMessagePassword = !result.isTrueField;
+                MessagePassword = result.message;
 
                 return false;
             }
-
-
         }
     }
 }

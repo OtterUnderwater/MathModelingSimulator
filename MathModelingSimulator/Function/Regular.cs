@@ -18,72 +18,71 @@ namespace MathModelingSimulator.Function
             static Regex mail = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
             static Regex telephone = new Regex(@"^\+7|\b8\d{10}\b");
         #endregion
-        //добавить телефон 
-        public (bool isTrueField, string message, bool isVisible) GetRegularTelephone(string Telephone)
+        public (bool isTrueField, string message) GetRegularTelephone(string Telephone)
         {
             if (telephone.IsMatch(Telephone))
             {
-                return (true, "", false);
+                return (true, "");
             }
             else
             {
-                return (false, "Телефон должен соотвествовать маске +7ХХХХХХХХХХ ИЛИ 8ХХХХХХХХХХ", true);
+                return (false, "Телефон должен соотвествовать маске +7ХХХХХХХХХХ ИЛИ 8ХХХХХХХХХХ");
             }
         }
-        public (bool isTrueField, string message, bool isVisible) GetRegularPassword(string Password) {
+        public (bool isTrueField, string message) GetRegularPassword(string Password) {
             if (password.IsMatch(Password))
             {
-                return (true, "", false);
+                return (true, "");
             }
             else
             {
-                return (false, "Пароль должен содержать не менее 8 символов, 1 букву a-z и 1 букву A-Z", true);
+                return (false, "Пароль должен содержать не менее 8 символов, 1 букву a-z и 1 букву A-Z");
             }
         }
-        public (bool isTrueField, string message, bool isVisible) GetRegularSurname(string Surname)
+        public (bool isTrueField, string message) GetRegularSurname(string Surname)
         {
             if (FI.IsMatch(Surname))
             {
-                return (true, "", false);
+                return (true, "");
             }
             else
             {
-                return (false, "Фамилия должна быть написана символами русского алфавита", true);
+                return (false, "Фамилия должна быть написана символами русского алфавита");
                
             }
         }
-        public (bool isTrueField, string message, bool isVisible) GetRegularName(string Name)
+        public (bool isTrueField, string message) GetRegularName(string Name)
         {
             
             if (FI.IsMatch(Name))
             {
-                return (true, "", false);
+                return (true, "");
             }
             else
             {
-                return (false, "Имя должно быть написано символами русского алфавита", true);
+                return (false, "Имя должно быть написано символами русского алфавита");
             }
         }
-        public (bool isTrueField, string message, bool isVisible) GetRegularEmail(string Email)
+        public (bool isTrueField, string message) GetRegularEmail(string Email)
         {
             if (mail.IsMatch(Email))
             {
-                return (true, "", false);
+                return (true, "");
             }
             else
             {
-                return (false, "Некорректный почтовый адрес.", true);
+                return (false, "Некорректный почтовый адрес.");
             }
         }
-        public (bool isTrueField, string message, bool isVisible) GetRegularLogin(string Login, Trio33pContext Context)
+        public (bool isTrueField, string message) GetRegularLogin(string Login, Trio33pContext Context)
         {
             User? nullLogin = Context.Users.FirstOrDefault(u => u.Login == Login);
             if (nullLogin == null)
             {
-                return (true, "", false);
+                return (true, "");
             }
             else {
-                return (false, "Пользователь с данным ником уже существует.", true);
+                return (false, "Пользователь с данным ником уже существует.");
                
             }
         }

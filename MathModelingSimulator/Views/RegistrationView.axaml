@@ -9,7 +9,7 @@
 	
 	<ScrollViewer>
 
-		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
 
 			<TextBlock
 				Text="Регистрация"
@@ -34,6 +34,7 @@
 				FontSize="14"
 				Foreground="#FFFFFF"
 				Margin="15 10 0 0"
+				TextWrapping="Wrap"
 				IsVisible="{Binding RegVM.IsVisibleMessageSurname}"
 				Text="{Binding RegVM.MessageSurname}"/>
 			
@@ -53,6 +54,7 @@
 				FontSize="14"
 				Foreground="#FFFFFF"
 				Margin="15 10 0 0"
+				TextWrapping="Wrap"
 				IsVisible="{Binding RegVM.IsVisibleMessageName}"
 				Text="{Binding RegVM.MessageName}"/>
 			<TextBox
@@ -83,9 +85,11 @@
 			<TextBlock
 				FontSize="14"
 				Foreground="#FFFFFF"
-				Margin="15 10 0 -10"
-				IsVisible="{Binding RegVM.Telephone}"
-				Text="{Binding RegVM.Telephone}"/>
+				Margin="15 10 0 0"
+				TextWrapping="Wrap"
+				IsVisible="{Binding RegVM.IsVisibleMessageTelephone}"
+				Text="{Binding RegVM.MessageTelephone}"
+				ClipToBounds="True"/>
 			<TextBox
 				Watermark="Почта"
 				Name="email"
@@ -101,9 +105,10 @@
 			<TextBlock
 				FontSize="14"
 				Foreground="#FFFFFF"
-				Margin="15 10 0 -10"
+				Margin="15 10 0 0"
+				TextWrapping="Wrap"
 				IsVisible="{Binding RegVM.IsVisibleMessageEmail}"
-				Text="{Binding RegVM.Email}"/>
+				Text="{Binding RegVM.MessageEmail}"/>
 			<TextBox
 				Watermark="Логин"
 				Name="login"
@@ -119,9 +124,10 @@
 			<TextBlock
 				FontSize="14"
 				Foreground="#FFFFFF"
-				Margin="15 10 0 -10"
+				Margin="15 10 0 0"
+				TextWrapping="Wrap"
 				IsVisible="{Binding RegVM.IsVisibleMessageLogin}"
-				Text="{Binding RegVM.Login}"/>
+				Text="{Binding RegVM.MessageLogin}"/>
 			<TextBox
 				Watermark="Пароль"
 				Name="password"
@@ -134,13 +140,15 @@
 				BorderBrush="#09A0B3"
 				PasswordChar="*"
 				Margin="0 20 0 0"
-				Text="{Binding RegVM.Password}"/>
+				Text="{Binding RegVM.Password}"
+				/>
 			<TextBlock
 				FontSize="14"
 				Foreground="#FFFFFF"
-				Margin="15 10 0 -10"
+				Margin="15 10 0 0"
 				IsVisible="{Binding RegVM.IsVisibleMessagePassword}"
-				Text="{Binding RegVM.Password}"/>
+				Text="{Binding RegVM.MessagePassword}"
+				TextWrapping="Wrap"/>
 			<ComboBox
 				ItemsSource="{Binding RegVM.Roles}"				
 				SelectedValue="{Binding RegVM.SelectRole}"
