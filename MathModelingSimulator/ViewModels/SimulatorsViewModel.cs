@@ -20,9 +20,9 @@ namespace MathModelingSimulator.ViewModels
 		bool isVisibleStudent = true;
 		public bool IsVisibleStudent { get => isVisibleStudent; set => SetProperty(ref isVisibleStudent, value); }
 
-		public void GetTask()
+		public void GetCreateSimulator()
         {
-            PageSwitch.View = new TaskSimulatorsView();
+            PageSwitch.View = new CreateSimulatorView();
         }
 
         /// <summary>

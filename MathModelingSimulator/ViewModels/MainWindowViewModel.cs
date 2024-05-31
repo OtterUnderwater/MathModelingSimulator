@@ -32,9 +32,12 @@ namespace MathModelingSimulator.ViewModels
         static TaskSimulatorsViewModel? taskSimulatorsViewModel;
         public static TaskSimulatorsViewModel? TaskSimulatorsVM { get => taskSimulatorsViewModel; set => taskSimulatorsViewModel = value; }
 
-        #endregion
+		static CreateSimulatorViewModel? createSimulatorViewModel;
+		public static CreateSimulatorViewModel? CreateSimulatorVM { get => createSimulatorViewModel; set => createSimulatorViewModel = value; }
+	
+		#endregion
 
-        public void ClearAuth()
+		public void ClearAuth()
 		{
 			authorizationVM = new AuthorizationViewModel();
 		}

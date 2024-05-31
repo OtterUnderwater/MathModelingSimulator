@@ -7,8 +7,5 @@
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
 
-	<StackPanel>
-		<UserControl Content="{Binding TaskSimulatorsVM.Matrix}"/>
-	</StackPanel>
-  
+
 </UserControl>

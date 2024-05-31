@@ -42,6 +42,9 @@
 
 
   <ItemGroup>
+    <Compile Update="Views\CreateSimulatorView.axaml.cs">
+      <DependentUpon>CreateSimulatorView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\MenuNavigationView.axaml.cs">
       <DependentUpon>MenuNavigationView.axaml</DependentUpon>
     </Compile>
