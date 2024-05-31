@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MathModelingSimulator.Models;
 using MathModelingSimulator.Navigation;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
+using System.Diagnostics;
 using System.Text;
 
 namespace MathModelingSimulator.ViewModels
@@ -21,16 +23,27 @@ namespace MathModelingSimulator.ViewModels
 		public static PageSwitcher PageSwitch { get => _pageSwitch; set => _pageSwitch = value; }
 		#endregion
 
+		#region database
 		private static readonly Trio33pContext _contextDb = new Trio33pContext();
 		public static Trio33pContext ContextDb { get => _contextDb; }
 
 		//Ключ для хэша пароля БД	
 		private static readonly byte[] _keyDb = Encoding.UTF8.GetBytes("trioSecretKey");
 		public static byte[] KeyDb { get => _keyDb; }
+		#endregion
+
+		#region trace
+		public static TextWriterTraceListener logFileListener = new TextWriterTraceListener("files/logFile.txt");
+
+		public ViewModelBase()
+		{
+			Trace.AutoFlush = true;
+		}
+		#endregion
 
 		private static User currentUser = new User();
 		public static User CurrentUser { get => currentUser; set => currentUser = value; }
-
 		public static int UserRole { get => currentUser.IdRole; }
-    }
+
+	}
 }

@@ -8,11 +8,14 @@ using System.Linq;
 using ReactiveUI;
 using DynamicData;
 using SkiaSharp;
+using System.Diagnostics;
+using Avalonia.Controls.Shapes;
 
 namespace MathModelingSimulator.ViewModels
 {
 	public class CreateSimulatorViewModel : MainWindowViewModel
 	{
+		#region PropertyObjects
 		int countRows = 0;
 		public int CountRows
 		{
@@ -41,6 +44,8 @@ namespace MathModelingSimulator.ViewModels
 		bool isVisibleEnterMatrix = false;
 		public bool IsVisibleEnterMatrix { get => isVisibleEnterMatrix; set => SetProperty(ref isVisibleEnterMatrix, value); }
 
+		#endregion
+
 		/// <summary>
 		/// Выбор 2. Ввод матрицы
 		/// </summary>
@@ -68,7 +73,7 @@ namespace MathModelingSimulator.ViewModels
 		/// </summary>
 		public async void AttachFileClick()
 		{
-			int[,] newMatrix = new int[0, 0];
+			int[,] newMatrix = null;
 			IsVisibleEnterMatrix = false;
 			var topLevel = TopLevel.GetTopLevel(PageSwitch.View);
 			var files = await topLevel.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
@@ -114,25 +119,34 @@ namespace MathModelingSimulator.ViewModels
 		/// <returns></returns>
 		private int[,] ReadFilesToTwoArray(Stream stream)
 		{
-			List<List<int>> tempList = new List<List<int>>();
-			using (StreamReader reader = new StreamReader(stream))
+			try
 			{
-				string? line;
-				while ((line = reader.ReadLine()) != null)
+				List<List<int>> tempList = new List<List<int>>();
+				using (StreamReader reader = new StreamReader(stream))
 				{
-					tempList.Add(line.Split(';').Select(int.Parse).ToList());
+					string? line;
+					while ((line = reader.ReadLine()) != null)
+					{
+						tempList.Add(line.Split(';', ',', ' ').Select(int.Parse).ToList());
+					}
 				}
+				// Преобразование tempList в двумерный массив int[,]
+				int[,] array = new int[tempList.Count, tempList[0].Count];
+				for (int i = 0; i < tempList.Count; i++)
+				{
+					for (int j = 0; j < tempList[i].Count; j++)
+					{
+						array[i, j] = tempList[i][j];
+					}
+				}
+				return array;
 			}
-			// Преобразование tempList в двумерный массив int[,]
-			int[,] array = new int[tempList.Count, tempList[0].Count];
-			for (int i = 0; i < tempList.Count; i++)
+			catch
 			{
-				for (int j = 0; j < tempList[i].Count; j++)
-				{
-					array[i, j] = tempList[i][j];
-				}
+				Trace.Listeners.Add(logFileListener);
+				Trace.WriteLine("ERROR CreateSimulatorVM: Пользователь прикрепил пустой файл или неправильный формат");
+				return null;
 			}
-			return array;
 		}
 
 	}
