@@ -4,6 +4,7 @@ using MathModelingSimulator.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,43 +16,68 @@ namespace MathModelingSimulator.ViewModels
     {
 		#region PropertyObjects
 		private string surname = "";
-        public string Surname { get => surname; set => surname = value; }
-
         private string name = "";
-        public string Name { get => name; set => name = value; }
-
         private string? patronymic;
-        public string? Patronymic { get => patronymic; set => patronymic = value; }
-
         private string telephone = "";
-        public string Telephone { get => telephone; set => telephone = value; }
-
         private string email = "";
-        public string Email { get => email; set => email = value; }
-
         private string login = "";
-        public string Login { get => login; set => login = value; }
-       
         private string password = "";
+        public string Surname { get => surname; set => surname = value; }
+        public string Name { get => name; set => name = value; }
+        public string? Patronymic { get => patronymic; set => patronymic = value; }
+        public string Telephone { get => telephone; set => telephone = value; }
+        public string Email { get => email; set => email = value; }
+        public string Login { get => login; set => login = value; }
         public string Password { get => password; set => password = value; }
 
-        private string message = "";
-        public string Message { get => message; set => this.SetProperty(ref message, value); }
-		public List<Role> Roles { get => ContextDb.Roles.ToList(); }
-
-		private Role selectRole = ContextDb.Roles.First();
+        private Role selectRole = ContextDb.Roles.First();
+        public List<Role> Roles { get => ContextDb.Roles.ToList(); }
 		public Role SelectRole { get => selectRole; set => selectRole = value; }
 
-		#endregion
+        #region
+        private string messageName = "";
+        private string messageSurname = "";
+        private string messagePatronymic = "";
+        private string messageTelephone = "";
+        private string messageEmail = "";
+        private string messageLogin = "";
+        private string messagePassword = "";
+        public string MessageName { get => messageName; set => this.SetProperty(ref messageName, value); }
+        public string MessageSurname { get => messageSurname; set => this.SetProperty(ref messageSurname, value); }
+        public string MessagePatronymic { get => messagePatronymic; set => this.SetProperty(ref messagePatronymic, value); }
+        public string MessageTelephone { get => messageTelephone; set => this.SetProperty(ref messageTelephone, value); }
+        public string MessageEmail { get => messageEmail; set => this.SetProperty(ref messageEmail, value); }
+        public string MessageLogin { get => messageLogin; set => this.SetProperty(ref messageLogin, value); }
+        public string MessagePassword { get => messagePassword; set => this.SetProperty(ref messagePassword, value); }
+        
+        private bool isVisibleMessageName = false;
+        private bool isVisibleMessageSurname = false;
+        private bool isVisibleMessagePatronymic = false;
+        private bool isVisibleMessageTelephone = false;
+        private bool isVisibleMessageEmail = false;
+        private bool isVisibleMessageLogin = false;
+        private bool isVisibleMessagePassword = false;
+        public bool IsVisibleMessageName { get => isVisibleMessageName; set => SetProperty(ref isVisibleMessageName, value); }
+        public bool IsVisibleMessageSurname { get => isVisibleMessageSurname; set => this.SetProperty(ref isVisibleMessageSurname, value); }
+        public bool IsVisibleMessagePatronymic { get => isVisibleMessagePatronymic; set => this.SetProperty(ref isVisibleMessagePatronymic, value); }
+        public bool IsVisibleMessageTelephone { get => isVisibleMessageTelephone; set => this.SetProperty(ref isVisibleMessageTelephone, value); }
+        public bool IsVisibleMessageEmail { get => isVisibleMessageEmail; set => this.SetProperty(ref isVisibleMessageEmail, value); }
+        public bool IsVisibleMessageLogin { get => isVisibleMessageLogin; set => this.SetProperty(ref isVisibleMessageLogin, value); }
+        public bool IsVisibleMessagePassword { get => isVisibleMessagePassword; set => this.SetProperty(ref isVisibleMessagePassword, value); }
 
-		public void GoToAuthorization()
+
+        #endregion
+        #endregion
+
+        public void GoToAuthorization()
 		{
 			StartPage.View = new AuthorizationView();
 		}
 
 		public void CheckRegistration()
 		{
-			if (IsTrueData())
+            
+            if (IsTrueData())
             {
 				Security security = new Security();
 				User user = new User();
@@ -70,43 +96,49 @@ namespace MathModelingSimulator.ViewModels
 			}
 		}
 
-		//*TO DO:* Это стоит вынести в класс функционала,
-		//так как в профиле пользователя нам тоже нужна проверка корректности телефона и ФИО
-		//А еще желательно сделать информативное уведомление об ошибках, а то фигня уведомления у вас
-		private bool IsTrueData() {
-            Regex FI = new Regex("^([А-Я]|[а-я])+$");
-            Regex mail = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
-            Regex password = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
-			if (FI.IsMatch(Surname) && FI.IsMatch(Name))
+        //*TO DO:* Это стоит вынести в класс функционала,
+        //так как в профиле пользователя нам тоже нужна проверка корректности телефона и ФИО
+        //А еще желательно сделать информативное уведомление об ошибках, а то фигня уведомления у вас
+        private bool IsTrueData()
+        {
+            Regular regular = new Regular();
+            (bool isTrueField, string message) result;
+            if (
+                regular.GetRegularSurname(Surname).isTrueField &&
+                regular.GetRegularName(Name).isTrueField &&
+                regular.GetRegularTelephone(Telephone).isTrueField &&
+                regular.GetRegularEmail(Email).isTrueField &&
+                regular.GetRegularLogin(login, ContextDb).isTrueField &&
+                regular.GetRegularPassword(Password).isTrueField
+            )
             {
-                if (mail.IsMatch(Email))
-                {
-                    User? nullLogin = ContextDb.Users.FirstOrDefault(u => u.Login == Login);
-                    if (nullLogin == null)
-                    {
-                        if (password.IsMatch(Password))
-                        {
-                            return true;
-                        }
-                        else {
-							Message = "Некорректный пароль";
-                            return false;
-                        }
-                    }
-                    else
-                    {
-						Message = "Пользователь с данным ником существует";
-                        return false;
-                    }
-                }
-                else
-                {
-					Message = "Некорректный почтовый адрес.";
-                    return false;
-                }
+                return true;
             }
             else {
-				Message = "Некорректный ввод фамилии и имени";
+                result = regular.GetRegularSurname(Surname);
+                IsVisibleMessageSurname = !result.isTrueField;
+                MessageSurname = result.message;
+
+                result = regular.GetRegularName(Name);
+                IsVisibleMessageName = !result.isTrueField;
+                MessageName = result.message;
+
+                result = regular.GetRegularTelephone(Telephone);
+                IsVisibleMessageTelephone = !result.isTrueField;
+                MessageTelephone = result.message;
+
+                result = regular.GetRegularEmail(Email);
+                IsVisibleMessageEmail = !result.isTrueField;
+                MessageEmail = result.message;
+
+                result = regular.GetRegularLogin(Login, ContextDb);
+                IsVisibleMessageLogin = !result.isTrueField;
+                MessageLogin = result.message;
+
+                result = regular.GetRegularPassword(Password);
+                IsVisibleMessagePassword = !result.isTrueField;
+                MessagePassword = result.message;
+
                 return false;
             }
         }
