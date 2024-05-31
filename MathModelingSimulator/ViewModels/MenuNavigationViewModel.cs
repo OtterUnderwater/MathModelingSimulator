@@ -19,6 +19,8 @@ namespace MathModelingSimulator.ViewModels
             UserAccountVM = new UserAccountViewModel();
             StatisticsVM = new StatisticsViewModel();
             SimulatorsVM = new SimulatorsViewModel();
+			CreateSimulatorVM = new CreateSimulatorViewModel();
+			TaskSimulatorsVM = new TaskSimulatorsViewModel();
             PageSwitch.View = new SimulatorsView();
         }
 

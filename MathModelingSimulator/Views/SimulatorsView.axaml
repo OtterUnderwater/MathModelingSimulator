@@ -26,9 +26,8 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 1. Транспортные задачи">
-
-					</Button>
+						Content="Тренажер 1. Транспортные задачи"
+						Command="{Binding }"/>
 
 				</Border>
 
@@ -140,7 +139,7 @@
 								CornerRadius="10"
 								HorizontalAlignment="Right"
 								Padding="50 8"
-								Command="{ Binding  }"/>
+								Command="{Binding SimulatorsVM.GetCreateSimulator}"/>
 						</Grid>
 
 						<Grid RowDefinitions="auto" ColumnDefinitions="auto,auto,auto,auto" Margin="0 20 0 0">

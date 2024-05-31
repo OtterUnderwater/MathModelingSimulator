@@ -8,6 +8,7 @@ using LiveChartsCore;
 using ReactiveUI;
 using SkiaSharp;
 using System.Linq;
+using MathModelingSimulator.Views;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -19,10 +20,15 @@ namespace MathModelingSimulator.ViewModels
 		bool isVisibleStudent = true;
 		public bool IsVisibleStudent { get => isVisibleStudent; set => SetProperty(ref isVisibleStudent, value); }
 
-		/// <summary>
-		/// Проверяет роль пользователя и запускает нужный экран
-		/// </summary>
-		public SimulatorsViewModel()
+		public void GetCreateSimulator()
+        {
+            PageSwitch.View = new CreateSimulatorView();
+        }
+
+        /// <summary>
+        /// Проверяет роль пользователя и запускает нужный экран
+        /// </summary>
+        public SimulatorsViewModel()
 		{
 			if (ContextDb.Roles.First(r => r.IdRole == CurrentUser.IdRole).Role1 == "Преподаватель")
 			{
