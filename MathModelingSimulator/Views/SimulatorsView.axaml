@@ -13,7 +13,7 @@
 		<StackPanel>
 
 			<!--Для студента-->
-			<StackPanel HorizontalAlignment="Stretch" Margin="100 0" IsVisible="{Binding SimulatorsVM.IsVisibleStudent}" Name="SPStudent">
+			<StackPanel HorizontalAlignment="Stretch" Margin="100 0" IsVisible="{Binding SimulatorsVM.IsVisibleStudent}">
 
 				<Border
 					BorderBrush="#000000"
@@ -117,7 +117,7 @@
 
 			<!--Для преподавателя-->
 			<StackPanel IsVisible="{Binding SimulatorsVM.IsVisibleTeacher}">
-				<Border Margin="100 40" Padding="30 40" IsVisible="True" Background="#303238" CornerRadius="10">
+				<Border Margin="60 50" Padding="30 40" IsVisible="True" Background="#303238" CornerRadius="10">
 
 					<StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
@@ -143,6 +143,7 @@
 						</Grid>
 
 						<Grid RowDefinitions="auto" ColumnDefinitions="auto,auto,auto,auto" Margin="0 20 0 0">
+							
 							<TextBlock
 								Grid.Row="0"
 								Grid.Column="0"

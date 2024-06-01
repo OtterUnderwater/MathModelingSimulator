@@ -10,6 +10,7 @@ using DynamicData;
 using SkiaSharp;
 using System.Diagnostics;
 using Avalonia.Controls.Shapes;
+using Avalonia.Media;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -96,15 +97,24 @@ namespace MathModelingSimulator.ViewModels
 		public async void ShowMatrix(int[,] taskMatrix)
 		{
 			Matrix = new StackPanel();
-			for (int i = 0; i < taskMatrix.GetLength(0); i++)
+			Matrix.Margin = new Avalonia.Thickness(0, 10, 0, 0);
+            for (int i = 0; i < taskMatrix.GetLength(0); i++)
 			{
 				StackPanel lbHorizontal = new StackPanel();
-				List<TextBox> listTextBox = new List<TextBox>();
+				lbHorizontal.Margin = new Avalonia.Thickness(0, 0, 0, 10);
+                List<TextBox> listTextBox = new List<TextBox>();
 				for (int j = 0; j < taskMatrix.GetLength(1); j++)
 				{
 					TextBox textBox = new TextBox();
 					textBox.Text = taskMatrix[i, j].ToString();
-					listTextBox.Add(textBox);
+                    textBox.Padding = new Avalonia.Thickness(20);
+					textBox.HorizontalContentAlignment = Avalonia.Layout.HorizontalAlignment.Center;
+					textBox.VerticalContentAlignment = Avalonia.Layout.VerticalAlignment.Center;
+					textBox.CornerRadius = new Avalonia.CornerRadius(10);
+                    textBox.BorderThickness = new Avalonia.Thickness(1);
+                    textBox.BorderBrush = new BrushConverter().ConvertFrom(Color.Parse("#09A0B3")) as Brush;
+					textBox.Margin = new Avalonia.Thickness(10, 0);
+                    listTextBox.Add(textBox);
 				}
 				lbHorizontal.Children.Add(listTextBox);
 				lbHorizontal.Orientation = Avalonia.Layout.Orientation.Horizontal;

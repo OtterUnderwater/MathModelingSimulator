@@ -92,7 +92,7 @@ namespace MathModelingSimulator.ViewModels
             ContextDb.SimulatorTasks.Remove(removedTask);
             ContextDb.SaveChanges();
             listSimulatorsTaskTeacherView.Remove(smtv);
-            List<int> indTasks = ListSTaskTeacherView.Select(it => it.Id.Item2).ToList();
+            indTasks = ListSTaskTeacherView.Select(it => it.Id.Item2).ToList();
             IndTasks = indTasks;
             listSimulatorsTaskTeacher.Remove(removedTask);
             IndTasksSelected = IndTasks[0];
