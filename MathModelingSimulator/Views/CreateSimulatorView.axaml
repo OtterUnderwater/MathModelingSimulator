@@ -31,7 +31,7 @@
 						CornerRadius="10"
 						HorizontalAlignment="Right"
 						Padding="50 8"
-						Command="{Binding }"/>
+						Command="{Binding CreateSimulatorVM.Cancel}"/>
 				</Grid>
 
 				<Border Height="1" Grid.Column="0" Grid.Row="0" Background="#09A0B3"
@@ -136,8 +136,8 @@
 						Grid.Row="0"
 						Grid.Column="1"
 						HorizontalAlignment="Stretch"
-						ItemsSource="{Binding }"
-						SelectedItem="{Binding }"
+						ItemsSource="{Binding CreateSimulatorVM.ListSimulatorsView}"
+						SelectedItem="{Binding CreateSimulatorVM.SelectedSimulator}"
 						Margin="0 0 0 0"
 						CornerRadius="10"
 						Foreground="#FFFFFF"
@@ -158,7 +158,7 @@
 					Foreground="#FFFFFF"
 					CornerRadius="10"
 					Padding="15 8"
-					Command="{Binding}"/>
+					Command="{Binding CreateSimulatorVM.CreateTask}"/>
 
 			</StackPanel>
 			

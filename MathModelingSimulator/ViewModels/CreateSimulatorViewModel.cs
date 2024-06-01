@@ -11,6 +11,7 @@ using SkiaSharp;
 using System.Diagnostics;
 using Avalonia.Controls.Shapes;
 using Avalonia.Media;
+using MathModelingSimulator.Views;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -47,13 +48,60 @@ namespace MathModelingSimulator.ViewModels
 
 		#endregion
 
-		/// <summary>
-		/// Выбор 2. Ввод матрицы
-		/// </summary>
-		public void EnterMatrix()
+		List<Simulator> listSimulators = new List<Simulator>();
+		public List<Simulator> ListSimulators { get => listSimulators; set => SetProperty(ref listSimulators, value); }
+
+		List<string> listSimulatorsView = new List<string>();
+		public List<string> ListSimulatorsView { get => listSimulatorsView; set => SetProperty(ref listSimulatorsView, value); }
+
+		string selectedSimulator = "";
+		public string SelectedSimulator { get => selectedSimulator; set => SetProperty(ref selectedSimulator, value); }
+
+		int[,] matrixBD;
+
+		public CreateSimulatorViewModel()
+		{
+			listSimulators = ContextDb.Simulators.ToList();
+			listSimulatorsView = listSimulators.Select(it => it.Name).ToList<string>();
+			selectedSimulator = ListSimulatorsView[0];
+		}
+
+		public void CreateTask()
+		{
+			var countRows = matrix.Children.Count;
+            var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
+			matrixBD = new int[countRows, countColumns];
+			for(int i = 0; i < countRows; i++)
+			{
+                for (int j = 0; j < countColumns; j++)
+                {
+					var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
+					matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
+                }
+            }
+			SimulatorTask newTask = new SimulatorTask();
+			var idSimulator = listSimulators.First(it => it.Name == selectedSimulator).Id;
+			newTask.IdSimulator = idSimulator;
+			newTask.ZadanieMatrix = matrixBD;
+			ContextDb.SimulatorTasks.Add(newTask);
+			//Добавить функцию генерацию ответа!
+			ContextDb.SaveChanges();
+            PageSwitch.View = new SimulatorsView();
+        }
+
+
+        /// <summary>
+        /// Выбор 2. Ввод матрицы
+        /// </summary>
+        public void EnterMatrix()
 		{
 			Matrix = new StackPanel();
 			IsVisibleEnterMatrix = true; //видимость ввода строк и столбцов
+		}
+
+		public void Cancel()
+		{
+			PageSwitch.View = new SimulatorsView();
 		}
 
 		/// <summary>
@@ -103,6 +151,7 @@ namespace MathModelingSimulator.ViewModels
 				StackPanel lbHorizontal = new StackPanel();
 				lbHorizontal.Margin = new Avalonia.Thickness(0, 0, 0, 10);
                 List<TextBox> listTextBox = new List<TextBox>();
+				int count = 0;
 				for (int j = 0; j < taskMatrix.GetLength(1); j++)
 				{
 					TextBox textBox = new TextBox();
@@ -112,14 +161,16 @@ namespace MathModelingSimulator.ViewModels
 					textBox.VerticalContentAlignment = Avalonia.Layout.VerticalAlignment.Center;
 					textBox.CornerRadius = new Avalonia.CornerRadius(10);
                     textBox.BorderThickness = new Avalonia.Thickness(1);
-                    textBox.BorderBrush = new BrushConverter().ConvertFrom(Color.Parse("#09A0B3")) as Brush;
-					textBox.Margin = new Avalonia.Thickness(10, 0);
+                    count++;
+                    textBox.Name = $"{i} {j} {count}"; //i j (номер элемента)
+                    textBox.BorderBrush = new SolidColorBrush(0xFF09A0B3);
+                    textBox.Margin = new Avalonia.Thickness(10, 0);
                     listTextBox.Add(textBox);
 				}
 				lbHorizontal.Children.Add(listTextBox);
 				lbHorizontal.Orientation = Avalonia.Layout.Orientation.Horizontal;
 				Matrix.Children.Add(lbHorizontal);
-			}
+            }
 		}
 
 		/// <summary>
