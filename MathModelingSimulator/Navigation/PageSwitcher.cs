@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using MathModelingSimulator.ViewModels;
+using MathModelingSimulator.Views;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace MathModelingSimulator.Navigation
@@ -9,7 +10,7 @@ namespace MathModelingSimulator.Navigation
 	/// </summary>
 	public class PageSwitcher : ViewModelBase
 	{
-		private UserControl? view = null;
+		private UserControl? view = new AuthorizationView();
 
 		/// <summary>
 		/// Текущая отображаемая страница

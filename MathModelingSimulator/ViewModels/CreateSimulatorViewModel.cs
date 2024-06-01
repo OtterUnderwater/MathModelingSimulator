@@ -86,7 +86,8 @@ namespace MathModelingSimulator.ViewModels
 			ContextDb.SimulatorTasks.Add(newTask);
 			//Добавить функцию генерацию ответа!
 			ContextDb.SaveChanges();
-            PageSwitch.View = new SimulatorsView();
+			SimulatorsVM = new SimulatorsViewModel();
+			PageSwitch.View = new SimulatorsView();
         }
 
 

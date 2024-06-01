@@ -1,4 +1,5 @@
-﻿using MathModelingSimulator.Views;
+﻿using Avalonia.Remote.Protocol.Designer;
+using MathModelingSimulator.Views;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -45,9 +46,5 @@ namespace MathModelingSimulator.ViewModels
         {
             registrationViewModel = new RegistrationViewModel();
         }
-        public MainWindowViewModel()
-		{
-			StartPage.View = new AuthorizationView();
-		}
 	}
 }

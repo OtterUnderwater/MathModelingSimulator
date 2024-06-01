@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MathModelingSimulator.Models;
+using MathModelingSimulator.Views;
 using MathModelingSimulator.Navigation;
-using Microsoft.EntityFrameworkCore.Storage;
-using System;
 using System.Diagnostics;
 using System.Text;
+using Avalonia.Controls;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -44,6 +44,5 @@ namespace MathModelingSimulator.ViewModels
 		private static User currentUser = new User();
 		public static User CurrentUser { get => currentUser; set => currentUser = value; }
 		public static int UserRole { get => currentUser.IdRole; }
-
 	}
 }
