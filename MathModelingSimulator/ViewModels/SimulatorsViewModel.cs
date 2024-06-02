@@ -31,14 +31,14 @@ namespace MathModelingSimulator.ViewModels
 
 		List<SimulatorTask> listSimulatorsTaskTeacher = new List<SimulatorTask> ();
 
-		List<SimulatorTaskView> listSimulatorsTaskTeacherView = new List<SimulatorTaskView> ();
-        public List<SimulatorTaskView> ListSTaskTeacherView { get => listSimulatorsTaskTeacherView; set => SetProperty(ref listSimulatorsTaskTeacherView, value); }
+		List<SimulatorTaskView> listTaskTeacherView = new List<SimulatorTaskView> ();
+        public List<SimulatorTaskView> ListTaskTeacherView { get => listTaskTeacherView; set => SetProperty(ref listTaskTeacherView, value); }
 
-        List<int> indTasks = new List<int> ();
-        public List<int> IndTasks { get => indTasks; set => SetProperty(ref indTasks, value); }
+        List<int> tasks = new List<int> ();
+        public List<int> Tasks { get => tasks; set => SetProperty(ref tasks, value); }
 
         int taskSelected;
-        public int IndTasksSelected { get => taskSelected; set => SetProperty(ref taskSelected, value); }
+        public int TaskSelected { get => taskSelected; set => SetProperty(ref taskSelected, value); }
 
         List<Simulator> listSimulators= new List<Simulator> ();
 
@@ -67,22 +67,41 @@ namespace MathModelingSimulator.ViewModels
 		void GetSimulatorsTaskTeacher()
 		{
             //Получаем лист заданий
-            listSimulatorsTaskTeacher = ContextDb.SimulatorTasks.ToList();
-            for (int i = 0; i < listSimulatorsTaskTeacher.Count; i++)
+            listSimulatorsTaskTeacher = ContextDb.SimulatorTasks.OrderBy(it => it.Id).ToList();
+            if(listSimulatorsTaskTeacher.Count != 0)
             {
-                string Zadanie = $"{i + 1}. {GetNameSimulatorByID(listSimulatorsTaskTeacher[i].IdSimulator)}";
-                string ZadanieMatrix = "";
-                for (int j = 0; j < listSimulatorsTaskTeacher[i].ZadanieMatrix.GetLength(0); j++) {
-                    for (int k = 0; k < listSimulatorsTaskTeacher[i].ZadanieMatrix.GetLength(1); k++){
-                        ZadanieMatrix += $"{listSimulatorsTaskTeacher[i].ZadanieMatrix[j, k]} ";
+                for (int i = 0; i < listSimulatorsTaskTeacher.Count; i++)
+                {
+                    string Zadanie = $"{listSimulatorsTaskTeacher[i].Id}. {GetNameSimulatorByID(listSimulatorsTaskTeacher[i].IdSimulator)}";
+                    string ZadanieMatrix = "";
+                    for (int j = 0; j < listSimulatorsTaskTeacher[i].ZadanieMatrix.GetLength(0); j++)
+                    {
+                        for (int k = 0; k < listSimulatorsTaskTeacher[i].ZadanieMatrix.GetLength(1); k++)
+                        {
+                            ZadanieMatrix += $"{listSimulatorsTaskTeacher[i].ZadanieMatrix[j, k]} ";
+                        }
+                        if (j != listSimulatorsTaskTeacher[i].ZadanieMatrix.GetLength(0) - 1) ZadanieMatrix += "\n";
                     }
-                    if(j != listSimulatorsTaskTeacher[i].ZadanieMatrix.GetLength(0) - 1) ZadanieMatrix += "\n";
+                    listTaskTeacherView.Add(new SimulatorTaskView((listSimulatorsTaskTeacher[i].Id, i + 1), Zadanie,
+                        ZadanieMatrix, "Ответ: " + listSimulatorsTaskTeacher[i].Answer, listSimulatorsTaskTeacher[i].ZadanieMatrix,
+                        GetNameSimulatorByID(listSimulatorsTaskTeacher[i].IdSimulator)));
                 }
-                listSimulatorsTaskTeacherView.Add(new SimulatorTaskView((listSimulatorsTaskTeacher[i].Id, i + 1), Zadanie,
-                    ZadanieMatrix, "Ответ: " + listSimulatorsTaskTeacher[i].Answer));
+                tasks = ListTaskTeacherView.Select(it => it.Id.Item1).ToList();
+                taskSelected = tasks[0];
             }
-            IndTasks = ListSTaskTeacherView.Select(it => it.Id.Item2).ToList();
-            IndTasksSelected = IndTasks[0];
+        }
+
+        public void UpdateTask()
+        {
+            if (listSimulatorsTaskTeacher.Count != 0)
+            {
+                var chtoto = ListTaskTeacherView.First(it => it.Id.Item1 == taskSelected);
+                int[,] updatingMatrix = chtoto.Matrix;
+                CreateSimulatorVM = new CreateSimulatorViewModel(updatingMatrix, chtoto.Task, chtoto.Id.Item1);
+                ContextDb.SimulatorTasks.Remove(listSimulatorsTaskTeacher.First(it => it.Id == chtoto.Id.Item1));
+                ContextDb.SaveChanges();
+                PageSwitch.View = new CreateSimulatorView();
+            }
         }
 
         string GetNameSimulatorByID(int ID)
@@ -92,16 +111,15 @@ namespace MathModelingSimulator.ViewModels
 
         public void DeleteTask()
         {
-            SimulatorTaskView smtv = listSimulatorsTaskTeacherView.First(it => it.Id.Item2 == taskSelected);
-            SimulatorTask removedTask = listSimulatorsTaskTeacher.FirstOrDefault(it => it.Id == smtv.Id.Item1);
-            ContextDb.SimulatorTasks.Remove(removedTask);
-            ContextDb.SaveChanges();
-            listSimulatorsTaskTeacherView.Remove(smtv);
-            indTasks = ListSTaskTeacherView.Select(it => it.Id.Item2).ToList();
-            IndTasks = indTasks;
-            listSimulatorsTaskTeacher.Remove(removedTask);
-            IndTasksSelected = IndTasks[0];
-
+            if (listSimulatorsTaskTeacher.Count != 0)
+            {
+                SimulatorTaskView smtv = listTaskTeacherView.First(it => it.Id.Item2 == taskSelected);
+                SimulatorTask removedTask = listSimulatorsTaskTeacher.FirstOrDefault(it => it.Id == smtv.Id.Item1);
+                ContextDb.SimulatorTasks.Remove(removedTask);
+                ContextDb.SaveChanges();
+                SimulatorsVM = new SimulatorsViewModel();
+                PageSwitch.View = new SimulatorsView();
+            }
         }
 
 	}
@@ -110,15 +128,19 @@ namespace MathModelingSimulator.ViewModels
     {
         public (int, int) Id { get; set; }
         public string Zadanie { get; set; }
+        public string Task { get; set; }
         public string ZadanieMatrix { get; set; }
+        public int[,] Matrix { get; set; }
         public string? Answer { get; set; }
 
-        public SimulatorTaskView((int, int) id, string Zadanie, string ZadanieMatrix, string? Answer)
+        public SimulatorTaskView((int, int) id, string Zadanie, string ZadanieMatrix, string? Answer, int[,] matrix, string task)
         {
             Id = id;
             this.Zadanie = Zadanie;
             this.ZadanieMatrix = ZadanieMatrix;
             this.Answer = Answer;
+            Matrix = matrix;
+            Task = task;
         }
     }
 }
