@@ -7,5 +7,15 @@
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
 
+	<StackPanel>
+		<TextBlock Text="{Binding TaskSimulatorsVM.SimulatorName}"/>
+		<TextBlock Text="Теория:"/>
+		<TextBlock Text="{Binding TaskSimulatorsVM.Theory}"/>
+		<TextBlock Text="Практика:"/>
+		<UserControl Content="{Binding TaskSimulatorsVM.Matrix}"/>
+		<TextBox Text="{Binding TaskSimulatorsVM.Answer}"/>
+		<Button Content="Ответить" Command="{Binding TaskSimulatorsVM.ClickAnswer}"/>
+		<TextBlock Text="{Binding TaskSimulatorsVM.Message}"/>
+	</StackPanel>
 
 </UserControl>

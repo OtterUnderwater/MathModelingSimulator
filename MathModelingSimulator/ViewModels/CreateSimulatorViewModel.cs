@@ -46,8 +46,6 @@ namespace MathModelingSimulator.ViewModels
 		bool isVisibleEnterMatrix = false;
 		public bool IsVisibleEnterMatrix { get => isVisibleEnterMatrix; set => SetProperty(ref isVisibleEnterMatrix, value); }
 
-		#endregion
-
 		List<Simulator> listSimulators = new List<Simulator>();
 		public List<Simulator> ListSimulators { get => listSimulators; set => SetProperty(ref listSimulators, value); }
 
@@ -58,6 +56,8 @@ namespace MathModelingSimulator.ViewModels
 		public string SelectedSimulator { get => selectedSimulator; set => SetProperty(ref selectedSimulator, value); }
 
 		int[,] matrixBD;
+
+		#endregion
 
 		public CreateSimulatorViewModel()
 		{

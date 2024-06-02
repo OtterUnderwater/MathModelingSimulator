@@ -9,9 +9,9 @@ public partial class SimulatorTask
 
     public int IdSimulator { get; set; }
 
-    public int[,]? ZadanieMatrix { get; set; }
+    public int[,] ZadanieMatrix { get; set; }
 
-    public string? Answer { get; set; }
+    public int Answer { get; set; }
 
     public virtual Simulator IdSimulatorNavigation { get; set; } = null!;
 }

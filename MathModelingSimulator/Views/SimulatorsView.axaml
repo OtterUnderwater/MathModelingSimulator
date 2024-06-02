@@ -27,7 +27,9 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 1. Транспортные задачи"/>
+						Content="Тренажер 1. Транспортные задачи"
+						Command="{Binding SimulatorsVM.GetTaskSimulator}"
+						CommandParameter="1"/>
 					
 				</Border>
 
@@ -43,7 +45,9 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 2. Симплекс метод"/>
+						Content="Тренажер 2. Симплекс метод"
+						Command="{Binding SimulatorsVM.GetTaskSimulator}"
+						CommandParameter="2"/>
 
 				</Border>
 
@@ -59,7 +63,9 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 3. Задача Коммивояжера"/>
+						Content="Тренажер 3. Задача Коммивояжера"
+						Command="{Binding SimulatorsVM.GetTaskSimulator}"
+						CommandParameter="3"/>
 
 				</Border>
 
@@ -75,7 +81,9 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 4. Графический метод"/>
+						Content="Тренажер 4. Графический метод"
+						Command="{Binding SimulatorsVM.GetTaskSimulator}"
+						CommandParameter="4"/>
 
 				</Border>
 
@@ -91,7 +99,9 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 5. Критический путь"/>
+						Content="Тренажер 5. Критический путь"
+						Command="{Binding SimulatorsVM.GetTaskSimulator}"
+						CommandParameter="5"/>
 
 				</Border>
 
@@ -107,9 +117,10 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						VerticalContentAlignment="Center"
-						
-						Content="Тренажер 6. Кратчайший путь"/>
+						VerticalContentAlignment="Center"				
+						Content="Тренажер 6. Кратчайший путь"
+						Command="{Binding SimulatorsVM.GetTaskSimulator}"
+						CommandParameter="6"/>
 
 				</Border>
 
