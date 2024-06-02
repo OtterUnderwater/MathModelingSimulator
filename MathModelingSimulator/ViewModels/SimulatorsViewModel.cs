@@ -82,11 +82,11 @@ namespace MathModelingSimulator.ViewModels
                         }
                         if (j != listSimulatorsTaskTeacher[i].ZadanieMatrix.GetLength(0) - 1) ZadanieMatrix += "\n";
                     }
-                    listTaskTeacherView.Add(new SimulatorTaskView((listSimulatorsTaskTeacher[i].Id, i + 1), Zadanie,
+                    listTaskTeacherView.Add(new SimulatorTaskView(listSimulatorsTaskTeacher[i].Id, Zadanie,
                         ZadanieMatrix, "Ответ: " + listSimulatorsTaskTeacher[i].Answer, listSimulatorsTaskTeacher[i].ZadanieMatrix,
                         GetNameSimulatorByID(listSimulatorsTaskTeacher[i].IdSimulator)));
                 }
-                tasks = ListTaskTeacherView.Select(it => it.Id.Item1).ToList();
+                tasks = ListTaskTeacherView.Select(it => it.Id).ToList();
                 taskSelected = tasks[0];
             }
         }
@@ -95,10 +95,10 @@ namespace MathModelingSimulator.ViewModels
         {
             if (listSimulatorsTaskTeacher.Count != 0)
             {
-                var chtoto = ListTaskTeacherView.First(it => it.Id.Item1 == taskSelected);
+                var chtoto = ListTaskTeacherView.First(it => it.Id == taskSelected);
                 int[,] updatingMatrix = chtoto.Matrix;
-                CreateSimulatorVM = new CreateSimulatorViewModel(updatingMatrix, chtoto.Task, chtoto.Id.Item1);
-                ContextDb.SimulatorTasks.Remove(listSimulatorsTaskTeacher.First(it => it.Id == chtoto.Id.Item1));
+                CreateSimulatorVM = new CreateSimulatorViewModel(updatingMatrix, chtoto.Task, chtoto.Id);
+                ContextDb.SimulatorTasks.Remove(listSimulatorsTaskTeacher.First(it => it.Id == chtoto.Id));
                 ContextDb.SaveChanges();
                 PageSwitch.View = new CreateSimulatorView();
             }
@@ -113,8 +113,8 @@ namespace MathModelingSimulator.ViewModels
         {
             if (listSimulatorsTaskTeacher.Count != 0)
             {
-                SimulatorTaskView smtv = listTaskTeacherView.First(it => it.Id.Item2 == taskSelected);
-                SimulatorTask removedTask = listSimulatorsTaskTeacher.FirstOrDefault(it => it.Id == smtv.Id.Item1);
+                SimulatorTaskView smtv = listTaskTeacherView.First(it => it.Id == taskSelected);
+                SimulatorTask removedTask = listSimulatorsTaskTeacher.FirstOrDefault(it => it.Id == smtv.Id);
                 ContextDb.SimulatorTasks.Remove(removedTask);
                 ContextDb.SaveChanges();
                 SimulatorsVM = new SimulatorsViewModel();
@@ -126,14 +126,14 @@ namespace MathModelingSimulator.ViewModels
 
     public class SimulatorTaskView
     {
-        public (int, int) Id { get; set; }
+        public int Id { get; set; }
         public string Zadanie { get; set; }
         public string Task { get; set; }
         public string ZadanieMatrix { get; set; }
         public int[,] Matrix { get; set; }
         public string? Answer { get; set; }
 
-        public SimulatorTaskView((int, int) id, string Zadanie, string ZadanieMatrix, string? Answer, int[,] matrix, string task)
+        public SimulatorTaskView(int id, string Zadanie, string ZadanieMatrix, string? Answer, int[,] matrix, string task)
         {
             Id = id;
             this.Zadanie = Zadanie;
