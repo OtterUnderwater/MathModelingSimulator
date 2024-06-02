@@ -57,6 +57,8 @@ namespace MathModelingSimulator.ViewModels
 
 		int[,] matrixBD;
 
+		int idTask = 0;
+
 		#endregion
 
 		public CreateSimulatorViewModel()
@@ -66,7 +68,19 @@ namespace MathModelingSimulator.ViewModels
 			selectedSimulator = ListSimulatorsView[0];
 		}
 
-		public void CreateTask()
+		public CreateSimulatorViewModel(int[,] updatingMatrix, string selectedSimulator, int idTask)
+		{
+            listSimulators = ContextDb.Simulators.ToList();
+            listSimulatorsView = listSimulators.Select(it => it.Name).ToList<string>();
+            CountRows = updatingMatrix.GetLength(0);
+			CountColumns = updatingMatrix.GetLength(1);
+            ShowMatrix(updatingMatrix);
+            IsVisibleEnterMatrix = true;
+            SelectedSimulator = ListSimulatorsView.First(it => it == selectedSimulator);
+			this.idTask = idTask;
+        }
+
+        public void CreateTask()
 		{
 			var countRows = matrix.Children.Count;
             var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
@@ -83,7 +97,11 @@ namespace MathModelingSimulator.ViewModels
 			var idSimulator = listSimulators.First(it => it.Name == selectedSimulator).Id;
 			newTask.IdSimulator = idSimulator;
 			newTask.ZadanieMatrix = matrixBD;
-			ContextDb.SimulatorTasks.Add(newTask);
+			if(idTask != 0)
+			{
+                newTask.Id = idTask;
+            } 
+            ContextDb.SimulatorTasks.Add(newTask);
 			//Добавить функцию генерацию ответа!
 			ContextDb.SaveChanges();
 			SimulatorsVM = new SimulatorsViewModel();
