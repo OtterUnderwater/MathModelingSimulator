@@ -33,7 +33,7 @@ namespace MathModelingSimulator.ViewModels
 		#endregion
 
 		#region trace
-		public static TextWriterTraceListener logFileListener = new TextWriterTraceListener("files/logFile.txt");
+		public static TextWriterTraceListener logFileListener = new TextWriterTraceListener("logFile.txt");
 
 		public ViewModelBase()
 		{

@@ -7,11 +7,33 @@
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels"
 			 xmlns:liveChart="using:LiveChartsCore.SkiaSharpView.Avalonia">
-
 	<StackPanel>
-		<Panel MinHeight="200" MinWidth="200">
-			<liveChart:PieChart Series="{Binding StatisticsVM.Series}"/>
-		</Panel>
+		<!--Для студента-->
+		<StackPanel IsVisible="{Binding StatisticsVM.IsVisibleStudent}">
+			<Panel MinHeight="200" MinWidth="200"
+				   IsVisible="{Binding StatisticsVM.IsVisiblePieChart}">
+				<liveChart:PieChart Series="{Binding StatisticsVM.Series}"/>
+			</Panel>
+			<TextBlock 
+				Text="Статистика отсутствует"
+				IsVisible="{Binding StatisticsVM.IsVisibleTextBlockNull}"/>
+		</StackPanel>
+		
+		<!--Для преподавателя-->
+		<StackPanel IsVisible="{Binding StatisticsVM.IsVisibleTeacher}">
+			<DataGrid ItemsSource="{Binding StatisticsVM.AllHistory}" IsVisible="{Binding StatisticsVM.IsVisibleDataGrid}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Дата прохождения" Binding="{Binding PassageDateTime}"/>
+					<DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
+					<DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+					<DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+					<DataGridTextColumn Header="Результат" Binding="{Binding Result}"/>
+					<DataGridTextColumn Header="Тренажер" Binding="{Binding NameSimulator}"/>
+				</DataGrid.Columns>
+			</DataGrid>
+			<TextBlock
+				Text="Статистика отсутствует"
+				IsVisible="{Binding StatisticsVM.IsVisibleTextBlockNull}"/>
+		</StackPanel>		
 	</StackPanel>
-
 </UserControl>

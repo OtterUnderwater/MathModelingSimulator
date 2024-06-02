@@ -1,14 +1,12 @@
 using Avalonia.Controls;
-using Avalonia.Media;
 using DynamicData;
 using MathModelingSimulator.Models;
 using MathModelingSimulator.Views;
-using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace MathModelingSimulator.ViewModels
@@ -32,11 +30,15 @@ namespace MathModelingSimulator.ViewModels
 
 		string message = "";
 		public string Message { get => message; set => SetProperty(ref message, value); }
+
+		int numberTask = 0;
 		#endregion
 
-		public void GetTask(int numberTask)
+		public void GetTask(int numberNeedTask)
 		{
-			string path = "files/" + ContextDb.Simulators.First(it => it.Id == numberTask).Theory + ".txt";
+			numberTask = numberNeedTask;
+			string directory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))));
+			string path = $"{directory}\\Assets\\{ContextDb.Simulators.First(it => it.Id == numberTask).Theory}.txt";
 			SimulatorName = $"Задание по теме {ContextDb.Simulators.First(it => it.Id == numberTask).Name}";
 			StreamReader reader = new StreamReader(path);
 			Theory = reader.ReadToEnd();
@@ -68,14 +70,22 @@ namespace MathModelingSimulator.ViewModels
 
 		public void ClickAnswer()
 		{
+			History history = new History();
+			history.IdUser = CurrentUser.Id;
+			history.IdSimulator = numberTask;
+			history.PassageDateTime = DateTime.Now;
 			if (Answer == task.Answer)
 			{
 				Message = "Задача решена правильно";
+				history.Result = true;
 			}
 			else
 			{
 				Message = "Задача решена неправильно";
-			}		
+				history.Result = false;
+			}
+			ContextDb.Histories.Add(history);
+			ContextDb.SaveChanges();
 		}
 
 	}

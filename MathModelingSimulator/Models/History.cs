@@ -13,7 +13,7 @@ public partial class History
 
     public bool Result { get; set; }
 
-    public DateTime? PassageDateTime { get; set; }
+    public DateTime PassageDateTime { get; set; }
 
     public virtual Simulator IdSimulatorNavigation { get; set; } = null!;
 
