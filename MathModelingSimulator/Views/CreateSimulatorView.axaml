@@ -38,7 +38,7 @@
 									HorizontalAlignment="Stretch" Margin="0 20 0 0"/>
 
 				<Button
-					Content="Прикрепить файл"
+					Content="Прикрепить файл (.txt, .csv)"
 					HorizontalContentAlignment="Center"
 					HorizontalAlignment="Stretch"
 					Background="#09A0B3"
