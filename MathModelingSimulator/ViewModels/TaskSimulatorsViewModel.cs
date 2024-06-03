@@ -23,8 +23,8 @@ namespace MathModelingSimulator.ViewModels
 		StackPanel matrix = new StackPanel();
 		public StackPanel Matrix { get => matrix; set => SetProperty(ref matrix, value); }
 		
-		int answer = 0;
-		public int Answer { get => answer; set => answer = value; }
+		int? answer = 0;
+		public int? Answer { get => answer; set => answer = value; }
 
 		SimulatorTask task = new SimulatorTask();
 
@@ -32,6 +32,9 @@ namespace MathModelingSimulator.ViewModels
 		public string Message { get => message; set => SetProperty(ref message, value); }
 
 		int numberTask = 0;
+
+		bool messageIsVisible = false;
+        public bool MessageIsVisible { get => messageIsVisible; set => SetProperty(ref messageIsVisible, value); }
         #endregion
 
         public void GetTask(int numberNeedTask)
@@ -73,7 +76,8 @@ namespace MathModelingSimulator.ViewModels
 			history.IdUser = CurrentUser.Id;
 			history.IdSimulator = numberTask;
 			history.PassageDateTime = DateTime.Now;
-			if (Answer == task.Answer)
+            MessageIsVisible = true;
+            if (Answer == task.Answer)
 			{
 				Message = "Задача решена правильно";
 				history.Result = true;

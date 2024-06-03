@@ -27,7 +27,7 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 1. Транспортные задачи"
+						Content="Тренажер 1. Транспортные задачи. Метод аппроксимации Фогеля"
 						Command="{Binding SimulatorsVM.GetTaskSimulator}"
 						CommandParameter="1"/>
 					
@@ -81,7 +81,7 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 4. Графический метод"
+						Content="Тренажер 4. Задача Джонсона"
 						Command="{Binding SimulatorsVM.GetTaskSimulator}"
 						CommandParameter="4"/>
 
@@ -99,28 +99,9 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 5. Критический путь"
+						Content="Тренажер 5. Алгоритм Дейкстры"
 						Command="{Binding SimulatorsVM.GetTaskSimulator}"
 						CommandParameter="5"/>
-
-				</Border>
-
-				<Border
-					BorderBrush="#000000"
-					BorderThickness="1"
-					Background="#09A0B3"
-					CornerRadius="10"
-					Margin="0 20 0 0">
-
-					<Button
-						HorizontalAlignment="Stretch"
-						Background="Transparent"
-						Foreground="White"
-						Padding="20 15 20 15"
-						VerticalContentAlignment="Center"				
-						Content="Тренажер 6. Кратчайший путь"
-						Command="{Binding SimulatorsVM.GetTaskSimulator}"
-						CommandParameter="6"/>
 
 				</Border>
 

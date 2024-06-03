@@ -52,6 +52,8 @@
 
 				</Grid>
 
+				<TextBlock Text="{Binding TaskSimulatorsVM.Message}" HorizontalAlignment="Center" Margin="0 10 0 0" IsVisible="{Binding TaskSimulatorsVM.MessageIsVisible}"/>
+
 				<Button
 					Content="Ответить"
 					HorizontalContentAlignment="Center"
@@ -61,7 +63,7 @@
 					Foreground="#FFFFFF"
 					CornerRadius="10"
 					Padding="15 8"
-					Command="{Binding TaskSimulatorsVM.ClickAnswer}"/>	
+					Command="{Binding TaskSimulatorsVM.ClickAnswer}"/>
 				
 			</StackPanel>
 			
