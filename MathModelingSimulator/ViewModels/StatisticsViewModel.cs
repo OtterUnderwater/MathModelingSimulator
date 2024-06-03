@@ -9,16 +9,19 @@ using MathModelingSimulator.Models;
 using System.Collections.Generic;
 using System;
 using DynamicData;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Runtime.Serialization;
 
 namespace MathModelingSimulator.ViewModels
 {
 	public class StatisticsViewModel : MainWindowViewModel
 	{
 		#region PropertyObjects
-		private ISeries[] series = new ISeries[0];
-		public ISeries[] Series { get => series; set => SetProperty(ref series, value); }
+		private ISeries[] seriesPieChart = new ISeries[0];
+		public ISeries[] SeriesPieChart { get => seriesPieChart; set => SetProperty(ref seriesPieChart, value); }
+
+		private ISeries[] seriesCartesianChart = new ISeries[0];
+		public ISeries[] SeriesCartesianChart { get => seriesCartesianChart; set => SetProperty(ref seriesCartesianChart, value); }
 
 		bool isVisiblePieChart = true;
 		public bool IsVisiblePieChart
@@ -61,6 +64,9 @@ namespace MathModelingSimulator.ViewModels
 			get => allHistory;
 			set => SetProperty(ref allHistory, value);
 		}
+
+		List<Axis> xAxes = new List<Axis>();
+		public List<Axis> XAxes { get => xAxes; set => SetProperty(ref xAxes, value); }
 		#endregion
 
 		public StatisticsViewModel()
@@ -86,14 +92,13 @@ namespace MathModelingSimulator.ViewModels
 			{
 				int countFalse = history.Count(h => h.Result == false);
 				int countTrue = history.Count(h => h.Result == true);
-				Series = new ISeries[]
+				SeriesPieChart = new ISeries[]
 				{
 				new PieSeries<int>
 				{
 					Name = $"Правильные ответы: {countTrue}",
 					Values = new int[] { countTrue },
-					Fill = (IPaint<SkiaSharpDrawingContext>) new SolidColorPaint(SKColor.Parse("#09A0B3")),
-					/*InnerRadius = 50 (для пончика)*/
+					Fill = (IPaint<SkiaSharpDrawingContext>) new SolidColorPaint(SKColor.Parse("#09A0B3"))
 				},
 				new PieSeries<int>
 				{
@@ -117,6 +122,34 @@ namespace MathModelingSimulator.ViewModels
 			List<History> history = ContextDb.Histories.ToList();
 			if (history.Count > 0)
 			{
+				List<History> distinctUsers = history.DistinctBy(h => h.IdUser).ToList();
+				List<ISeries> series = new List<ISeries>();
+				List<DateTime> dateHistory = history.Select(h => h.PassageDateTime.Date).Distinct().OrderBy(date => date).ToList(); // Получение уникальных дат
+				Axis axis = new Axis();
+				string[] stringsDate = new string[dateHistory.Count];
+				for (int i = 0; i < dateHistory.Count; i++)
+				{
+					stringsDate[i] = dateHistory[i].Date.ToString("dd.MM.yyyy");
+				}
+				axis.Labels = stringsDate;
+				XAxes.Add(axis);
+				foreach (var user in distinctUsers)
+				{
+					LineSeries<int> lineSeries = new LineSeries<int>();
+					User userInfo = ContextDb.Users.FirstOrDefault(u => u.Id == user.IdUser);
+					lineSeries.Name = $"{userInfo.Surname} {userInfo.Name}";
+					List<History> userHistory = history.Where(h => h.IdUser == user.IdUser).OrderBy(h => h.PassageDateTime).ToList();
+					List<int> values = new List<int>();
+					for (int i = 0; i < dateHistory.Count; i++)
+					{
+						int testsPassed = userHistory.Count(u => u.PassageDateTime.Date == dateHistory[i].Date);
+						//Сколько тестов прошел пользователь в день
+						values.Add(testsPassed);
+					}
+					lineSeries.Values = values.ToArray();
+					series.Add(lineSeries);
+				}
+				SeriesCartesianChart = series.ToArray();
 				foreach (History h in history)
 				{
 					HistoryUser historyUser = new HistoryUser();

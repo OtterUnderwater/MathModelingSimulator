@@ -7,33 +7,78 @@
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels"
 			 xmlns:liveChart="using:LiveChartsCore.SkiaSharpView.Avalonia">
-	<StackPanel>
-		<!--Для студента-->
-		<StackPanel IsVisible="{Binding StatisticsVM.IsVisibleStudent}">
-			<Panel MinHeight="200" MinWidth="200"
-				   IsVisible="{Binding StatisticsVM.IsVisiblePieChart}">
-				<liveChart:PieChart Series="{Binding StatisticsVM.Series}"/>
-			</Panel>
-			<TextBlock 
-				Text="Статистика отсутствует"
-				IsVisible="{Binding StatisticsVM.IsVisibleTextBlockNull}"/>
-		</StackPanel>
-		
-		<!--Для преподавателя-->
-		<StackPanel IsVisible="{Binding StatisticsVM.IsVisibleTeacher}">
-			<DataGrid ItemsSource="{Binding StatisticsVM.AllHistory}" IsVisible="{Binding StatisticsVM.IsVisibleDataGrid}">
-				<DataGrid.Columns>
-					<DataGridTextColumn Header="Дата прохождения" Binding="{Binding PassageDateTime}"/>
-					<DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
-					<DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
-					<DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
-					<DataGridTextColumn Header="Результат" Binding="{Binding Result}"/>
-					<DataGridTextColumn Header="Тренажер" Binding="{Binding NameSimulator}"/>
-				</DataGrid.Columns>
-			</DataGrid>
+
+	<Border CornerRadius="10" Background="#303238" Margin="60 50 60 60" >
+		<StackPanel>
 			<TextBlock
-				Text="Статистика отсутствует"
-				IsVisible="{Binding StatisticsVM.IsVisibleTextBlockNull}"/>
-		</StackPanel>		
-	</StackPanel>
+					Text="Статистика"
+					FontWeight="Bold"
+					FontSize="24"
+					TextAlignment="Center"
+					Margin="0 20 0 0"/>
+
+			<!--Для студента-->
+			<StackPanel IsVisible="{Binding StatisticsVM.IsVisibleStudent}">
+				<StackPanel IsVisible="{Binding StatisticsVM.IsVisiblePieChart}"
+							HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Panel MinHeight="400" MinWidth="400" Margin="0 20 0 40">
+						<liveChart:PieChart Series="{Binding StatisticsVM.SeriesPieChart}"/>
+					</Panel>
+					<StackPanel Orientation="Horizontal"
+								 Margin="10">
+						<Ellipse Fill="#09A0B3"
+								 Width="20"
+								 Height="20"
+								 Margin="0 0 10 0"/>
+						<TextBlock Text="Правильные ответы"
+								   FontSize="16"/>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal"
+								Margin="10 0 0 20">
+						<Ellipse Fill="#7B69E1"
+								 Width="20"
+								 Height="20"
+								 Margin="0 0 10 0"/>
+						<TextBlock Text="Неправильные ответы"
+								   FontSize="16"/>
+					</StackPanel>
+				</StackPanel>
+				<TextBlock
+					Text="Статистика отсутствует"
+					IsVisible="{Binding StatisticsVM.IsVisibleTextBlockNull}"
+					HorizontalAlignment="Center"
+					FontSize="18"
+					Margin="10"/>
+			</StackPanel>
+
+
+			<!--Для преподавателя-->
+			<StackPanel IsVisible="{Binding StatisticsVM.IsVisibleTeacher}">
+				<Panel MinHeight="400" MinWidth="400" Margin="0 20">
+					<liveChart:CartesianChart
+						Series="{Binding StatisticsVM.SeriesCartesianChart}"
+						XAxes="{Binding StatisticsVM.XAxes}"/>
+				</Panel>
+				<DataGrid ItemsSource="{Binding StatisticsVM.AllHistory}"
+						  IsVisible="{Binding StatisticsVM.IsVisibleDataGrid}"
+						  HorizontalAlignment="Center"
+						  Margin="0 20">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Дата прохождения" Binding="{Binding PassageDateTime}"/>
+						<DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
+						<DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+						<DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+						<DataGridTextColumn Header="Результат" Binding="{Binding Result}"/>
+						<DataGridTextColumn Header="Тренажер" Binding="{Binding NameSimulator}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+				<TextBlock
+					Text="Статистика отсутствует"
+					IsVisible="{Binding StatisticsVM.IsVisibleTextBlockNull}"
+					HorizontalAlignment="Center"
+					FontSize="18"
+					Margin="10"/>
+			</StackPanel>
+		</StackPanel>
+	</Border>
 </UserControl>
