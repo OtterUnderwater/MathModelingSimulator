@@ -55,7 +55,11 @@ namespace MathModelingSimulator.ViewModels
 		string selectedSimulator = "";
 		public string SelectedSimulator { get => selectedSimulator; set => SetProperty(ref selectedSimulator, value); }
 
-		int[,] matrixBD;
+        string answer = "";
+        public string Answer { get => answer; set => answer = value; }
+
+
+        int[,] matrixBD;
 
 		int idTask = 0;
 

@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
              x:Class="MathModelingSimulator.Views.CreateSimulatorView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
@@ -147,6 +147,31 @@
 						Padding="20 8"
 						FontSize ="18"/>
 					
+				</Grid>
+
+				<Grid ColumnDefinitions="auto, auto" RowDefinitions="*" Margin="0 20 0 0" HorizontalAlignment="Center">
+
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Text="Ответ:"
+						Margin="0 0 0 0"
+						FontSize="14"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Left" />
+
+					<TextBox
+						Grid.Row="0"
+						Grid.Column="1"
+						FontSize="14"
+						Background="#303238"
+						Foreground="#FFFFFF"
+						CornerRadius="10"
+						Width="200"
+						Margin="20 0 0 0"
+						BorderBrush="#09A0B3"
+						Text="{Binding CreateSimulatorVM.Answer}"/>
+
 				</Grid>
 				
 				<Button

@@ -32,9 +32,9 @@ namespace MathModelingSimulator.ViewModels
 		public string Message { get => message; set => SetProperty(ref message, value); }
 
 		int numberTask = 0;
-		#endregion
+        #endregion
 
-		public void GetTask(int numberNeedTask)
+        public void GetTask(int numberNeedTask)
 		{
 			numberTask = numberNeedTask;
 			string directory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory))));
@@ -47,17 +47,16 @@ namespace MathModelingSimulator.ViewModels
 			int randomIndex = random.Next(listTask.Count);
 			task = listTask[randomIndex];
 			Matrix = new StackPanel();
-			Matrix.Margin = new Avalonia.Thickness(0, 10, 0, 0);
 			for (int i = 0; i < task.ZadanieMatrix.GetLength(0); i++)
 			{
 				StackPanel lbHorizontal = new StackPanel();
-				lbHorizontal.Margin = new Avalonia.Thickness(0, 0, 0, 10);
+				lbHorizontal.Margin = new Avalonia.Thickness(0, 0, 0, 0);
 				List<TextBlock> listTextBlock = new List<TextBlock>();
 				for (int j = 0; j < task.ZadanieMatrix.GetLength(1); j++)
 				{
 					TextBlock textBlock = new TextBlock();
 					textBlock.Text = task.ZadanieMatrix[i, j].ToString();
-					textBlock.Padding = new Avalonia.Thickness(20);
+					textBlock.Padding = new Avalonia.Thickness(10);
 					textBlock.Margin = new Avalonia.Thickness(10, 0);
 					listTextBlock.Add(textBlock);
 				}
