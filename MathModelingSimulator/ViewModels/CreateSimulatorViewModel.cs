@@ -90,17 +90,7 @@ namespace MathModelingSimulator.ViewModels
 			if(CountRows != 0 && CountColumns != 0)
 			{
                 IsVisibleRezult = false;
-                var countRows = matrix.Children.Count;
-                var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
-                _matrixBD = new int[countRows, countColumns];
-                for (int i = 0; i < countRows; i++)
-                {
-                    for (int j = 0; j < countColumns; j++)
-                    {
-                        var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
-                        _matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
-                    }
-                }
+				fillMatrix();
                 switch (selectedSimulator)
                 {
                     case "Симплекс метод": MessageRezult = "Я пока не умею такое решать"; break;
@@ -112,7 +102,23 @@ namespace MathModelingSimulator.ViewModels
             }
 		}
 
-		void GetAnswerZadDzhonsons()
+		void fillMatrix()
+		{
+            var countRows = matrix.Children.Count;
+            var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
+            _matrixBD = new int[countRows, countColumns];
+            for (int i = 0; i < countRows; i++)
+            {
+                for (int j = 0; j < countColumns; j++)
+                {
+                    var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
+                    _matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
+                }
+            }
+        }
+
+
+        void GetAnswerZadDzhonsons()
 		{
             Johnson_sAlgorithm johnson_SAlgorithm = new Johnson_sAlgorithm();
 			var rezult = johnson_SAlgorithm.Start(_matrixBD);
@@ -132,17 +138,7 @@ namespace MathModelingSimulator.ViewModels
 		{
 			if (CountRows != 0 && CountColumns != 0)
 			{
-                var countRows = matrix.Children.Count;
-                var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
-                _matrixBD = new int[countRows, countColumns];
-                for (int i = 0; i < countRows; i++)
-                {
-                    for (int j = 0; j < countColumns; j++)
-                    {
-                        var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
-                        _matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
-                    }
-                }
+                fillMatrix();
                 SimulatorTask newTask = new SimulatorTask();
                 var idSimulator = listSimulators.First(it => it.Name == selectedSimulator).Id;
                 newTask.IdSimulator = idSimulator;
