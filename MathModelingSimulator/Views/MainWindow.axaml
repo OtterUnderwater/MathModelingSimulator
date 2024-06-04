@@ -6,9 +6,11 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="MathModelingSimulator.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="MathModelingSimulator"
-		Background="#222327">
+        Icon="/Assets/logoSimMM.png"
+        Title="Simulator Math Modeling"
+		Background="#222327"
+		MinHeight="400"
+		MinWidth="600">
 
     <Design.DataContext>	
         <vm:MainWindowViewModel/>

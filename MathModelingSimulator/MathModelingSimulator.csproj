@@ -14,6 +14,11 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Assets\logoSimMM.png" />
+    <None Remove="Assets\SimMM.png" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.0.6" />
