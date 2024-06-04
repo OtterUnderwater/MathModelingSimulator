@@ -95,14 +95,57 @@ namespace MathModelingSimulator.ViewModels
                 {
                     case "Симплекс метод": MessageRezult = "Я пока не умею такое решать"; break;
                     case "Задача Коммивояжера": MessageRezult = "Я пока не умею такое решать"; break;
-                    case "Транспортные задачи. Метод аппроксимации Фогеля": Answer = "Я пока не умею такое решать"; break;
+                    case "Транспортные задачи. Метод аппроксимации Фогеля": GetAnswerZadFogel(); break;
                     case "Задача Джонсона": GetAnswerZadDzhonsons(); break;
                     case "Алгоритм Дейкстры": MessageRezult = "Я пока не умею такое решать"; break;
                 }
             }
 		}
 
-		void fillMatrix()
+		void GetAnswerZadFogel()
+		{
+            BasicMethods mFodel = new BasicMethods();
+			var ai = new int[_matrixBD.GetLength(1) - 1];
+            int cI = 0;
+            for (int j = 1; j < _matrixBD.GetLength(1); j++)
+            {
+				ai[cI] = _matrixBD[0,j];
+				cI++;
+            }
+            cI = 0;
+            var bj = new int[_matrixBD.GetLength(0) - 1];
+            for (int j = 1; j < _matrixBD.GetLength(0); j++)
+            {
+                bj[cI] = _matrixBD[j, 0];
+                cI++;
+            }
+			var tarif = new int[ai.Length, bj.Length];
+			cI = 0;
+			for (int j = 1; j < _matrixBD.GetLength(0); j++)
+			{
+				int cJ = 0;
+				for (int k = 1; k < _matrixBD.GetLength(1); k++)
+				{
+					tarif[cI, cJ] = _matrixBD[j, k];
+                    cJ++;
+                }
+				cI++;
+            }
+            var rezult = mFodel.Start(bj, ai, tarif);
+            if (rezult != null)
+            {
+                Answer = rezult.ToString();
+            }
+            else
+            {
+                IsVisibleRezult = true;
+                MessageRezult = "Ваша матрица не подходит для этой задачи";
+                Answer = "0";
+            }
+        }
+
+
+        void fillMatrix()
 		{
             var countRows = matrix.Children.Count;
             var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
@@ -116,7 +159,6 @@ namespace MathModelingSimulator.ViewModels
                 }
             }
         }
-
 
         void GetAnswerZadDzhonsons()
 		{
@@ -267,6 +309,8 @@ namespace MathModelingSimulator.ViewModels
 						array[i, j] = tempList[i][j];
 					}
 				}
+				CountRows = array.GetLength(0);
+				CountColumns = array.GetLength(1);
 				return array;
 			}
 			catch
