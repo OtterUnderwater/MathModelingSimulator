@@ -2,7 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700
+			 "
              x:Class="MathModelingSimulator.Views.UserAccountView"
 			 x:DataType="vm:MainWindowViewModel"
 			 xmlns:vm="using:MathModelingSimulator.ViewModels">
@@ -151,6 +152,17 @@
 				Margin="0 20 0 0"
 				Padding="50 8"
 				Command="{ Binding UserAccountVM.SaveUserAccount }"/>
+
+			<TextBlock
+				Grid.Column="1"
+				Grid.Row="0"
+				FontSize="14"
+				Foreground="#FFFFFF"
+				Margin="0 10 0 0"
+				HorizontalAlignment="Center"
+				TextWrapping="Wrap"
+				IsVisible="{Binding UserAccountVM.IsVisibleRezult}"
+				Text="{Binding UserAccountVM.MessageRezult}"/>
 
 			<Button
 				Content="Выйти"
