@@ -95,7 +95,7 @@ namespace MathModelingSimulator.ViewModels
                 {
                     case "Симплекс метод на минимум": GetMinSimplexMetod(); break;
                     case "Симплекс метод на максимум": GetMaxSimplexMetod(); break;
-                    case "Задача Коммивояжера": MessageRezult = "Я пока не умею такое решать"; break;
+                    case "Задача Коммивояжера": GetTravelingSalesmanProblem(); break;
                     case "Транспортные задачи. Метод аппроксимации Фогеля": GetAnswerZadFogel(); break;
                     case "Задача Джонсона": GetAnswerZadDzhonsons(); break;
                     case "Алгоритм Дейкстры": MessageRezult = "Я пока не умею такое решать"; break;
@@ -204,6 +204,30 @@ namespace MathModelingSimulator.ViewModels
                 MessageRezult = "Ваша матрица не подходит для этой задачи";
                 Answer = "0";
             }
+        }
+		void GetTravelingSalesmanProblem() {
+            TravelingSalesmanProblem travelingSalesmanProblem = new TravelingSalesmanProblem();
+			if (CountRows == CountColumns)
+			{
+				var rezult = travelingSalesmanProblem.MainTravelingSalesmanProblem(_matrixBD);
+
+				if (rezult != null)
+				{
+					Answer = rezult.ToString();
+				}
+				else
+				{
+					IsVisibleRezult = true;
+					MessageRezult = "Ваша матрица не подходит для этой задачи";
+					Answer = "0";
+				}
+			}
+			else {
+                IsVisibleRezult = true;
+                MessageRezult = "Ваша матрица не подходит для этой задачи";
+                Answer = "0";
+            }
+            
         }
         public void CreateTask()
 		{
