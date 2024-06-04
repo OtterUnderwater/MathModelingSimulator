@@ -5,11 +5,8 @@ using Avalonia.Platform.Storage;
 using MathModelingSimulator.Models;
 using System.IO;
 using System.Linq;
-using ReactiveUI;
 using DynamicData;
-using SkiaSharp;
 using System.Diagnostics;
-using Avalonia.Controls.Shapes;
 using Avalonia.Media;
 using MathModelingSimulator.Views;
 
@@ -57,13 +54,10 @@ namespace MathModelingSimulator.ViewModels
 
         string answer = "";
         public string Answer { get => answer; set => answer = value; }
-
-
-        int[,] matrixBD;
-
-		int idTask = 0;
-
 		#endregion
+
+		int[,] _matrixBD;
+		int _idTask = 0;
 
 		public CreateSimulatorViewModel()
 		{
@@ -81,29 +75,29 @@ namespace MathModelingSimulator.ViewModels
             ShowMatrix(updatingMatrix);
             IsVisibleEnterMatrix = true;
             SelectedSimulator = ListSimulatorsView.First(it => it == selectedSimulator);
-			this.idTask = idTask;
+			this._idTask = idTask;
         }
 
         public void CreateTask()
 		{
 			var countRows = matrix.Children.Count;
             var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
-			matrixBD = new int[countRows, countColumns];
+			_matrixBD = new int[countRows, countColumns];
 			for(int i = 0; i < countRows; i++)
 			{
                 for (int j = 0; j < countColumns; j++)
                 {
 					var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
-					matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
+					_matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
                 }
             }
 			SimulatorTask newTask = new SimulatorTask();
 			var idSimulator = listSimulators.First(it => it.Name == selectedSimulator).Id;
 			newTask.IdSimulator = idSimulator;
-			newTask.ZadanieMatrix = matrixBD;
-			if(idTask != 0)
+			newTask.ZadanieMatrix = _matrixBD;
+			if(_idTask != 0)
 			{
-                newTask.Id = idTask;
+                newTask.Id = _idTask;
             } 
             ContextDb.SimulatorTasks.Add(newTask);
 			//Добавить функцию генерацию ответа!

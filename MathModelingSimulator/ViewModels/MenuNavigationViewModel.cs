@@ -1,13 +1,14 @@
-using System;
-using System.Collections.Generic;
 using MathModelingSimulator.Views;
-using ReactiveUI;
 
 namespace MathModelingSimulator.ViewModels
 {
 	public class MenuNavigationViewModel : MainWindowViewModel
 	{
+		#region PropertyObjects
 		static string btnName = "Статистика";
+		public static string BtnName { get => btnName; set => btnName = value; }
+		#endregion
+
 		public MenuNavigationViewModel()
 		{
 			//1 - Преподаватель
@@ -24,8 +25,6 @@ namespace MathModelingSimulator.ViewModels
             PageSwitch.View = new SimulatorsView();
         }
 
-		public static string BtnName { get => btnName; set => btnName = value; }
-
 		public void GetPageAccount()
 		{
 			PageSwitch.View = new UserAccountView();
@@ -38,7 +37,6 @@ namespace MathModelingSimulator.ViewModels
 
 		public void GetPageStatistics()
 		{
-			//Переходе на страницу проверяем что есть статистика у ученика
 			PageSwitch.View = new StatisticsView();
 		}
 	}

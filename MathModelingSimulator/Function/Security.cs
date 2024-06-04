@@ -5,7 +5,7 @@ using MathModelingSimulator.ViewModels;
 
 namespace MathModelingSimulator.Function
 {
-	public class Security : ViewModelBase
+	public class Security : MainWindowViewModel
 	{
 		public string GetHashPassword(string password)
 		{

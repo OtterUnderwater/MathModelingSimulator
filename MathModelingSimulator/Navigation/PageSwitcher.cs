@@ -1,7 +1,6 @@
 ﻿using Avalonia.Controls;
 using MathModelingSimulator.ViewModels;
 using MathModelingSimulator.Views;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace MathModelingSimulator.Navigation
 {

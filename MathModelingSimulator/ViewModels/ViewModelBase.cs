@@ -1,10 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using MathModelingSimulator.Models;
-using MathModelingSimulator.Views;
 using MathModelingSimulator.Navigation;
 using System.Diagnostics;
 using System.Text;
-using Avalonia.Controls;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -34,7 +32,6 @@ namespace MathModelingSimulator.ViewModels
 
 		#region trace
 		public static TextWriterTraceListener logFileListener = new TextWriterTraceListener("logFile.txt");
-
 		public ViewModelBase()
 		{
 			Trace.AutoFlush = true;

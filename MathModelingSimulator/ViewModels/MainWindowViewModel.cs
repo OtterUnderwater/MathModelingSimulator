@@ -1,8 +1,4 @@
-﻿using Avalonia.Remote.Protocol.Designer;
-using MathModelingSimulator.Views;
-using Microsoft.EntityFrameworkCore;
-using System;
-
+﻿
 namespace MathModelingSimulator.ViewModels
 {   
 	/// <summary>
@@ -10,7 +6,6 @@ namespace MathModelingSimulator.ViewModels
 	/// </summary>
 	public class MainWindowViewModel : ViewModelBase
 	{
-
 		#region ViewModel-objects
 		static AuthorizationViewModel? authorizationVM = new AuthorizationViewModel();
 		public static AuthorizationViewModel? AuthVM { get => authorizationVM; set => authorizationVM = value; }
@@ -35,7 +30,6 @@ namespace MathModelingSimulator.ViewModels
 
 		static CreateSimulatorViewModel? createSimulatorViewModel;
 		public static CreateSimulatorViewModel? CreateSimulatorVM { get => createSimulatorViewModel; set => createSimulatorViewModel = value; }
-	
 		#endregion
 
 		public void ClearAuth()

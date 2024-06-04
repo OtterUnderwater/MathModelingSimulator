@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using System.Linq;
 using MathModelingSimulator.Function;
-using System.Xml.Linq;
-using MathModelingSimulator.Models;
 using MathModelingSimulator.Views;
 
 namespace MathModelingSimulator.ViewModels
@@ -18,7 +15,6 @@ namespace MathModelingSimulator.ViewModels
         public string PhoneNum { get => phoneNum; set => this.SetProperty(ref phoneNum, value); }
         public string Login { get => login; set => this.SetProperty(ref login, value); }
         public string Email { get => email; set => this.SetProperty(ref email, value); }
-
         
         private string messageSurnameName = "";
         private string messageTelephone = "";
@@ -32,14 +28,14 @@ namespace MathModelingSimulator.ViewModels
         private bool isVisibleMessageEmail = false;
         public bool IsVisibleMessageSurnameName { get => isVisibleMessageSurnameName; set => this.SetProperty(ref isVisibleMessageSurnameName, value); }
         public bool IsVisibleMessageTelephone { get => isVisibleMessageTelephone; set => this.SetProperty(ref isVisibleMessageTelephone, value); }
-        public bool IsVisibleMessageEmail { get => isVisibleMessageEmail; set => this.SetProperty(ref isVisibleMessageEmail, value); }
-        
+        public bool IsVisibleMessageEmail { get => isVisibleMessageEmail; set => this.SetProperty(ref isVisibleMessageEmail, value); }     
         #endregion
 
         public UserAccountViewModel()
         {
             GetUserAccount();
         }
+        
         public void GetUserAccount()
         {
             PhoneNum = CurrentUser.Telephone;
@@ -69,6 +65,7 @@ namespace MathModelingSimulator.ViewModels
             ClearAuth();
             StartPage.View = new AuthorizationView();
         }
+
         private bool IsTrueData()
         {
             Regular regular = new Regular();

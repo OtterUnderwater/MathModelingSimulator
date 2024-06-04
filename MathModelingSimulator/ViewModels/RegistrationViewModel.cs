@@ -4,11 +4,6 @@ using MathModelingSimulator.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using Tmds.DBus.Protocol;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -33,8 +28,8 @@ namespace MathModelingSimulator.ViewModels
         private Role selectRole = ContextDb.Roles.First();
         public List<Role> Roles { get => ContextDb.Roles.ToList(); }
 		public Role SelectRole { get => selectRole; set => selectRole = value; }
-
-        #region
+       
+        #region Message
         private string messageName = "";
         private string messageSurname = "";
         private string messagePatronymic = "";
@@ -64,8 +59,6 @@ namespace MathModelingSimulator.ViewModels
         public bool IsVisibleMessageEmail { get => isVisibleMessageEmail; set => this.SetProperty(ref isVisibleMessageEmail, value); }
         public bool IsVisibleMessageLogin { get => isVisibleMessageLogin; set => this.SetProperty(ref isVisibleMessageLogin, value); }
         public bool IsVisibleMessagePassword { get => isVisibleMessagePassword; set => this.SetProperty(ref isVisibleMessagePassword, value); }
-
-
         #endregion
         #endregion
 

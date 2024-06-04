@@ -2,15 +2,13 @@ using System.Linq;
 using MathModelingSimulator.Views;
 using MathModelingSimulator.Models;
 using MathModelingSimulator.Function;
-using System.Security.Cryptography;
-using System.Text;
-using System;
 
 namespace MathModelingSimulator.ViewModels
 {
 
 	public class AuthorizationViewModel : MainWindowViewModel
 	{
+		#region PropertyObjects
 		private string login = "";
 		public string Login { get => login; set => login = value; }
 
@@ -19,8 +17,9 @@ namespace MathModelingSimulator.ViewModels
 
         private string message = "";
 		public string Message { get => message; set => this.SetProperty(ref message, value); }
+		#endregion
 
-        public void GoToRegistration()
+		public void GoToRegistration()
 		{
 			StartPage.View = new RegistrationView();
 		}

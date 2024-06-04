@@ -8,9 +8,6 @@ using System.Linq;
 using MathModelingSimulator.Models;
 using System.Collections.Generic;
 using System;
-using DynamicData;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Runtime.Serialization;
 
 namespace MathModelingSimulator.ViewModels
 {
@@ -71,7 +68,7 @@ namespace MathModelingSimulator.ViewModels
 
 		public StatisticsViewModel()
 		{
-			if (ContextDb.Roles.First(it => it.IdRole == CurrentUser.IdRole).Role1 == "Студент")
+			if (ContextDb.Roles.First(it => it.IdRole == UserRole).Role1 == "Студент")
 			{
 				UserStudent();
 				IsVisibleStudent = true;

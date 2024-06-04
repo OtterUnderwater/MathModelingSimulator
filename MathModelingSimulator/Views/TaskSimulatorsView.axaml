@@ -10,65 +10,73 @@
 	<ScrollViewer>
 
 		<Border Margin="60 50" Padding="30 25" IsVisible="True" Background="#303238" CornerRadius="10">
-
 			<StackPanel>
-				
-				<TextBlock Text="{Binding TaskSimulatorsVM.SimulatorName}" FontWeight="Bold" 
-						   FontSize="20" />
-				<TextBlock Text="Теория:" FontSize="14" Margin="0 20 0 0"/>
+					<TextBlock Text="{Binding TaskSimulatorsVM.SimulatorName}" FontWeight="Bold"
+							   FontSize="20" />
+					<TextBlock Text="Теория:" FontSize="14" Margin="0 20 0 0"/>
 
-				<Border Padding="20" Background="#222327" CornerRadius="10" Margin="0 10 0 0">
-					<TextBlock Text="{Binding TaskSimulatorsVM.Theory}" TextWrapping="Wrap"/>
-				</Border>
-				
-				<TextBlock Text="Практика:" FontSize="14" Margin="0 20 0 0"/>
+					<Border Padding="20" Background="#222327" CornerRadius="10" Margin="0 10 0 0">
+						<TextBlock Text="{Binding TaskSimulatorsVM.Theory}" TextWrapping="Wrap"/>
+					</Border>
 
-				<Border Padding="20" Background="#222327" CornerRadius="10" Margin="0 10 0 0">
-					<UserControl Content="{Binding TaskSimulatorsVM.Matrix}"/>
-				</Border>
 
-				<Grid ColumnDefinitions="auto, auto" RowDefinitions="*" Margin="0 20 0 0" HorizontalAlignment="Center">
+					<StackPanel IsVisible="{Binding TaskSimulatorsVM.IsVisibleTask}">
+					
+					<TextBlock Text="Практика:" FontSize="14" Margin="0 20 0 0"/>
 
-					<TextBlock
-						Grid.Row="0"
-						Grid.Column="0"
-						Text="Целевая функция:"
-						Margin="0 0 0 0"
-						FontSize="14"
-						VerticalAlignment="Center"
-						HorizontalAlignment="Left" />
+					<Border Padding="20" Background="#222327" CornerRadius="10" Margin="0 10 0 0">
+						<UserControl Content="{Binding TaskSimulatorsVM.Matrix}"/>
+					</Border>
 
-					<TextBox
-						Grid.Row="0"
-						Grid.Column="1"
-						FontSize="14"
-						Background="#303238"
+					<Grid ColumnDefinitions="auto, auto" RowDefinitions="*" Margin="0 20 0 0" HorizontalAlignment="Center">
+
+						<TextBlock
+							Grid.Row="0"
+							Grid.Column="0"
+							Text="Целевая функция:"
+							FontSize="14"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Left" />
+
+						<TextBox
+							Grid.Row="0"
+							Grid.Column="1"
+							FontSize="14"
+							Background="#303238"
+							Foreground="#FFFFFF"
+							CornerRadius="10"
+							Width="200"
+							Margin="20 0 0 0"
+							BorderBrush="#09A0B3"
+							Text="{Binding TaskSimulatorsVM.Answer}"/>
+
+					</Grid>
+
+					<TextBlock Text="{Binding TaskSimulatorsVM.Message}" HorizontalAlignment="Center" Margin="0 10 0 0" IsVisible="{Binding TaskSimulatorsVM.MessageIsVisible}"/>
+
+					<Button
+						Content="Ответить"
+						HorizontalContentAlignment="Center"
+						HorizontalAlignment="Stretch"
+						Background="#09A0B3"
+						Margin="0 20 0 0"
 						Foreground="#FFFFFF"
 						CornerRadius="10"
-						Width="200"
-						Margin="20 0 0 0"
-						BorderBrush="#09A0B3"
-						Text="{Binding TaskSimulatorsVM.Answer}"/>
+						Padding="15 8"
+						Command="{Binding TaskSimulatorsVM.ClickAnswer}"/>
 
-				</Grid>
-
-				<TextBlock Text="{Binding TaskSimulatorsVM.Message}" HorizontalAlignment="Center" Margin="0 10 0 0" IsVisible="{Binding TaskSimulatorsVM.MessageIsVisible}"/>
-
-				<Button
-					Content="Ответить"
-					HorizontalContentAlignment="Center"
-					HorizontalAlignment="Stretch"
-					Background="#09A0B3"
-					Margin="0 20 0 0"
-					Foreground="#FFFFFF"
-					CornerRadius="10"
-					Padding="15 8"
-					Command="{Binding TaskSimulatorsVM.ClickAnswer}"/>
-				
+				</StackPanel>
+				<StackPanel IsVisible="{Binding TaskSimulatorsVM.IsVisibleTaskNull}">
+					<TextBlock
+						Text="В данный момент задачи по данной теме отсутствуют"
+						FontSize="14"
+						Margin="20"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Center" />
+				</StackPanel>
 			</StackPanel>
-			
 		</Border>
-		
+
 	</ScrollViewer>
 
 </UserControl>
