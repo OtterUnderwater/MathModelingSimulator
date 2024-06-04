@@ -28,7 +28,6 @@ public static string HostNpgsql = "Host=ngknn.ru;Port=5442;Database=trio_33p;Use
 На следующее:  
 ```
 public static string HostNpgsql = "Host=edu.pg.ngknn.local;Port=5432;Database=trio_33p;Username=33P;Password=12345";  
-
 ```
 ### Ознакомление  
 Для тестирования программы без необходимости регистрироваься можно использовать следующие логин и пароль:  
