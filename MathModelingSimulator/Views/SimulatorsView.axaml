@@ -45,7 +45,7 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 2. Симплекс метод"
+						Content="Тренажер 2. Симплекс метод на минимум"
 						Command="{Binding SimulatorsVM.GetTaskSimulator}"
 						CommandParameter="2"/>
 
@@ -63,12 +63,11 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 3. Задача Коммивояжера"
+						Content="Тренажер 3. Симплекс метод на максимум"
 						Command="{Binding SimulatorsVM.GetTaskSimulator}"
 						CommandParameter="3"/>
 
 				</Border>
-
 				<Border
 					BorderBrush="#000000"
 					BorderThickness="1"
@@ -81,7 +80,7 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 4. Задача Джонсона"
+						Content="Тренажер 4. Задача Коммивояжера"
 						Command="{Binding SimulatorsVM.GetTaskSimulator}"
 						CommandParameter="4"/>
 
@@ -99,9 +98,27 @@
 						Background="Transparent"
 						Foreground="White"
 						Padding="20 15 20 15"
-						Content="Тренажер 5. Алгоритм Дейкстры"
+						Content="Тренажер 5. Задача Джонсона"
 						Command="{Binding SimulatorsVM.GetTaskSimulator}"
 						CommandParameter="5"/>
+
+				</Border>
+
+				<Border
+					BorderBrush="#000000"
+					BorderThickness="1"
+					Background="#09A0B3"
+					CornerRadius="10"
+					Margin="0 20 0 0">
+
+					<Button
+						HorizontalAlignment="Stretch"
+						Background="Transparent"
+						Foreground="White"
+						Padding="20 15 20 15"
+						Content="Тренажер 6. Алгоритм Дейкстры"
+						Command="{Binding SimulatorsVM.GetTaskSimulator}"
+						CommandParameter="6"/>
 
 				</Border>
 

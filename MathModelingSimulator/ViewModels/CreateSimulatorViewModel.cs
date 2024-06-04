@@ -93,7 +93,8 @@ namespace MathModelingSimulator.ViewModels
 				fillMatrix();
                 switch (selectedSimulator)
                 {
-                    case "Симплекс метод": MessageRezult = "Я пока не умею такое решать"; break;
+                    case "Симплекс метод на минимум": GetMinSimplexMetod(); break;
+                    case "Симплекс метод на максимум": GetMaxSimplexMetod(); break;
                     case "Задача Коммивояжера": MessageRezult = "Я пока не умею такое решать"; break;
                     case "Транспортные задачи. Метод аппроксимации Фогеля": GetAnswerZadFogel(); break;
                     case "Задача Джонсона": GetAnswerZadDzhonsons(); break;
@@ -175,7 +176,35 @@ namespace MathModelingSimulator.ViewModels
 				Answer = "0";
             }
 		}
-
+		void GetMinSimplexMetod() {
+            SimplexMetod simplexMetod = new SimplexMetod();
+            var rezult = simplexMetod.MainSimplexMetod(_matrixBD, false);
+            if (rezult != null)
+            {
+                Answer = rezult.ToString();
+            }
+            else
+            {
+                IsVisibleRezult = true;
+                MessageRezult = "Ваша матрица не подходит для этой задачи";
+                Answer = "0";
+            }
+        }
+        void GetMaxSimplexMetod()
+        {
+            SimplexMetod simplexMetod = new SimplexMetod();
+            var rezult = simplexMetod.MainSimplexMetod(_matrixBD, true);
+            if (rezult != null)
+            {
+                Answer = rezult.ToString();
+            }
+            else
+            {
+                IsVisibleRezult = true;
+                MessageRezult = "Ваша матрица не подходит для этой задачи";
+                Answer = "0";
+            }
+        }
         public void CreateTask()
 		{
 			if (CountRows != 0 && CountColumns != 0)
