@@ -2,7 +2,7 @@
 Программа-тренажер для студентов по задачам математического моделирования.  
 Макет: https://www.figma.com/design/c4Qv9J8hsPYBfKaHDxltLG/MM-Simulator?node-id=0-1  
   
-<img  src="http://gogs.ngknn.ru:3000/TrioEducationalPractice/MathModelingSimulator/src/master/logo.png" width="200" alt="Simulator-MM"/>
+<img src="http://gogs.ngknn.ru:3000/TrioEducationalPractice/MathModelingSimulator/raw/35b563e213f543ec9638d7d30edaaff81a6f371b/logo.png" width="200" alt="Simulator-MM"/>
   
 ## Установка программы средствами Visual Studio  
 1. Откройте Visual Studio  
@@ -24,7 +24,6 @@
 Если приложение запускается с локального компьютера НГК, то в файле Programm нужно заменить строку:  
 ```
 public static string HostNpgsql = "Host=ngknn.ru;Port=5442;Database=trio_33p;Username=33P;Password=12345";  
-
 ```
 На следующее:  
 ```

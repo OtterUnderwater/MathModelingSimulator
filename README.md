@@ -2,7 +2,7 @@
 A simulator program for students on mathematical modeling problems.  
 Layout: https://www.figma.com/design/c4Qv9J8hsPYBfKaHDxltLG/MM-Simulator?node-id=0-1  
   
-<img  src="http://gogs.ngknn.ru:3000/TrioEducationalPractice/MathModelingSimulator/src/master/logo.png" width="200" alt="Simulator-MM"/>
+<img src="http://gogs.ngknn.ru:3000/TrioEducationalPractice/MathModelingSimulator/raw/35b563e213f543ec9638d7d30edaaff81a6f371b/logo.png" width="200" alt="Simulator-MM"/>
   
 ## Installation
 1. Open Visual Studio
@@ -11,7 +11,7 @@ Layout: https://www.figma.com/design/c4Qv9J8hsPYBfKaHDxltLG/MM-Simulator?node-id
 4. Start the project
 
 ## Instructions for working with the system  
-Before working with the system, we recommend reading the [User's Guide](http://gogs.ngknn.ru:3000/TrioEducationalPractice/documentation/src/master/%d0%a0%d1%83%d0%ba%d0%be%d0%b2%d0%be%d0%b4%d1%81%d1%82%d0%b2%d0%be%d0%9f%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d1%82%d0%b5%d0%bb%d1%8f.docx) 
+Before working with the system, we recommend reading the [user's Guide](http://gogs.ngknn.ru:3000/TrioEducationalPractice/documentation/src/master/%d0%a0%d1%83%d0%ba%d0%be%d0%b2%d0%be%d0%b4%d1%81%d1%82%d0%b2%d0%be%d0%9f%d0%be%d0%bb%d1%8c%d0%b7%d0%be%d0%b2%d0%b0%d1%82%d0%b5%d0%bb%d1%8f.docx) 
 
 A set of documentation:   
 [Documentation](http://gogs.ngknn.ru:3000/TrioEducationalPractice/documentation)  
@@ -28,7 +28,6 @@ public static string HostNpgsql = "Host=ngknn.ru;Port=5442;Database=trio_33p;Use
 For the following:  
 ```
 public static string HostNpgsql = "Host=edu.pg.ngknn.local;Port=5432;Database=trio_33p;Username=33P;Password=12345";
-
 ```
 
 ### Introduction
