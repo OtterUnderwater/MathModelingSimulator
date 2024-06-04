@@ -36,7 +36,35 @@
 
 				<Border Height="1" Grid.Column="0" Grid.Row="0" Background="#09A0B3"
 									HorizontalAlignment="Stretch" Margin="0 20 0 0"/>
+				
+				<Grid ColumnDefinitions="auto, *" RowDefinitions="*" Margin="0 40 0 0">
 
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Text="Тип тренажёра"
+						Margin="0 0 20 0"
+						FontSize="14"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Left" />
+
+					<ComboBox
+						Grid.Row="0"
+						Grid.Column="1"
+						HorizontalAlignment="Stretch"
+						ItemsSource="{Binding CreateSimulatorVM.ListSimulatorsView}"
+						SelectedItem="{Binding CreateSimulatorVM.SelectedSimulator}"
+						Margin="0 0 0 0"
+						CornerRadius="10"
+						Foreground="#FFFFFF"
+						Background="#303238"
+						BorderBrush="#09A0B3"
+						BorderThickness="1"
+						Padding="20 8"
+						FontSize ="18"/>
+
+				</Grid>
+				
 				<Button
 					Content="Прикрепить файл (.txt, .csv)"
 					HorizontalContentAlignment="Center"
@@ -45,7 +73,7 @@
 					Foreground="#FFFFFF"
 					CornerRadius="10"
 					Padding="15 8"
-					Margin="0 40 0 0"
+					Margin="0 20 0 0"
 					Command="{Binding CreateSimulatorVM.AttachFileClick}"/>
 				
 				<TextBlock
@@ -120,34 +148,28 @@
 					Content="{Binding CreateSimulatorVM.Matrix}"
 					HorizontalAlignment="Center"
 					Margin="10"/>
+				
+				<Button
+					Content="Сгенерировать ответ"
+					HorizontalContentAlignment="Center"
+					HorizontalAlignment="Center"
+					Background="#09A0B3"
+					Margin="0 0 0 0"
+					Foreground="#FFFFFF"
+					CornerRadius="10"
+					Padding="50 8"
+					Command="{Binding CreateSimulatorVM.GenerateAnswer}"/>
 
-				<Grid ColumnDefinitions="auto, *" RowDefinitions="*" Margin="0 0 0 0">
-
-					<TextBlock
-						Grid.Row="0"
-						Grid.Column="0"
-						Text="Тип тренажёра"
-						Margin="0 0 20 0"
-						FontSize="14"
-						VerticalAlignment="Center"
-						HorizontalAlignment="Left" />
-
-					<ComboBox
-						Grid.Row="0"
-						Grid.Column="1"
-						HorizontalAlignment="Stretch"
-						ItemsSource="{Binding CreateSimulatorVM.ListSimulatorsView}"
-						SelectedItem="{Binding CreateSimulatorVM.SelectedSimulator}"
-						Margin="0 0 0 0"
-						CornerRadius="10"
-						Foreground="#FFFFFF"
-						Background="#303238"
-						BorderBrush="#09A0B3"
-						BorderThickness="1"
-						Padding="20 8"
-						FontSize ="18"/>
-					
-				</Grid>
+				<TextBlock
+					Grid.Column="1"
+					Grid.Row="0"
+					FontSize="14"
+					Foreground="#FFFFFF"
+					Margin="0 10 0 0"
+					HorizontalAlignment="Center"
+					TextWrapping="Wrap"
+					IsVisible="{Binding CreateSimulatorVM.IsVisibleRezult}"
+					Text="{Binding CreateSimulatorVM.MessageRezult}"/>
 
 				<Grid ColumnDefinitions="auto, auto" RowDefinitions="*" Margin="0 20 0 0" HorizontalAlignment="Center">
 

@@ -9,14 +9,15 @@ using DynamicData;
 using System.Diagnostics;
 using Avalonia.Media;
 using MathModelingSimulator.Views;
+using MathModelingSimulator.Function;
 
 namespace MathModelingSimulator.ViewModels
 {
 	public class CreateSimulatorViewModel : MainWindowViewModel
 	{
-		#region PropertyObjects
-		int countRows = 0;
-		public int CountRows
+        #region PropertyObjects
+        int? countRows = 0;
+		public int? CountRows
 		{
 			get => countRows;
 			set
@@ -26,8 +27,8 @@ namespace MathModelingSimulator.ViewModels
 			}
 		}
 
-		int countColumns = 0;
-		public int CountColumns
+        int? countColumns = 0;
+		public int? CountColumns
 		{
 			get => countColumns;
 			set
@@ -53,13 +54,19 @@ namespace MathModelingSimulator.ViewModels
 		public string SelectedSimulator { get => selectedSimulator; set => SetProperty(ref selectedSimulator, value); }
 
         string answer = "";
-        public string Answer { get => answer; set => answer = value; }
+        public string Answer { get => answer; set => SetProperty(ref answer, value); }
 		#endregion
 
 		int[,] _matrixBD;
 		int _idTask = 0;
 
-		public CreateSimulatorViewModel()
+        private string messageRezult = "";
+        public string MessageRezult { get => messageRezult; set => this.SetProperty(ref messageRezult, value); }
+
+        private bool isVisibleRezult = false;
+        public bool IsVisibleRezult { get => isVisibleRezult; set => this.SetProperty(ref isVisibleRezult, value); }
+
+        public CreateSimulatorViewModel()
 		{
 			listSimulators = ContextDb.Simulators.ToList();
 			listSimulatorsView = listSimulators.Select(it => it.Name).ToList<string>();
@@ -78,32 +85,79 @@ namespace MathModelingSimulator.ViewModels
 			this._idTask = idTask;
         }
 
-        public void CreateTask()
-		{
-			var countRows = matrix.Children.Count;
-            var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
-			_matrixBD = new int[countRows, countColumns];
-			for(int i = 0; i < countRows; i++)
+		public void GenerateAnswer()
+        {
+			if(CountRows != 0 && CountColumns != 0)
 			{
-                for (int j = 0; j < countColumns; j++)
+                IsVisibleRezult = false;
+                var countRows = matrix.Children.Count;
+                var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
+                _matrixBD = new int[countRows, countColumns];
+                for (int i = 0; i < countRows; i++)
                 {
-					var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
-					_matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
+                    for (int j = 0; j < countColumns; j++)
+                    {
+                        var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
+                        _matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
+                    }
+                }
+                switch (selectedSimulator)
+                {
+                    case "Симплекс метод": MessageRezult = "Я пока не умею такое решать"; break;
+                    case "Задача Коммивояжера": MessageRezult = "Я пока не умею такое решать"; break;
+                    case "Транспортные задачи. Метод аппроксимации Фогеля": Answer = "Я пока не умею такое решать"; break;
+                    case "Задача Джонсона": GetAnswerZadDzhonsons(); break;
+                    case "Алгоритм Дейкстры": MessageRezult = "Я пока не умею такое решать"; break;
                 }
             }
-			SimulatorTask newTask = new SimulatorTask();
-			var idSimulator = listSimulators.First(it => it.Name == selectedSimulator).Id;
-			newTask.IdSimulator = idSimulator;
-			newTask.ZadanieMatrix = _matrixBD;
-			if(_idTask != 0)
+		}
+
+		void GetAnswerZadDzhonsons()
+		{
+            Johnson_sAlgorithm johnson_SAlgorithm = new Johnson_sAlgorithm();
+			var rezult = johnson_SAlgorithm.Start(_matrixBD);
+			if(rezult != null)
 			{
-                newTask.Id = _idTask;
-            } 
-            ContextDb.SimulatorTasks.Add(newTask);
-			//Добавить функцию генерацию ответа!
-			ContextDb.SaveChanges();
-			SimulatorsVM = new SimulatorsViewModel();
-			PageSwitch.View = new SimulatorsView();
+                Answer = rezult.ToString();
+            }
+			else
+			{
+				IsVisibleRezult = true;
+                MessageRezult = "Ваша матрица не подходит для этой задачи";
+				Answer = "0";
+            }
+		}
+
+        public void CreateTask()
+		{
+			if (CountRows != 0 && CountColumns != 0)
+			{
+                var countRows = matrix.Children.Count;
+                var countColumns = (matrix.Children[0] as StackPanel).Children.Count;
+                _matrixBD = new int[countRows, countColumns];
+                for (int i = 0; i < countRows; i++)
+                {
+                    for (int j = 0; j < countColumns; j++)
+                    {
+                        var buffer = (matrix.Children[i] as StackPanel).Children[j].Name.Split(" ").Select(int.Parse).ToList();
+                        _matrixBD[Convert.ToInt32(buffer[0]), Convert.ToInt32(buffer[1])] = Convert.ToInt32(((matrix.Children[i] as StackPanel).Children[j] as TextBox).Text);
+                    }
+                }
+                SimulatorTask newTask = new SimulatorTask();
+                var idSimulator = listSimulators.First(it => it.Name == selectedSimulator).Id;
+                newTask.IdSimulator = idSimulator;
+                newTask.ZadanieMatrix = _matrixBD;
+                if (_idTask != 0)
+                {
+                    newTask.Id = _idTask;
+                }
+                newTask.Answer = Convert.ToInt32(answer);
+                ContextDb.SimulatorTasks.Add(newTask);
+                //Добавить функцию генерацию ответа!
+                ContextDb.SaveChanges();
+                SimulatorsVM = new SimulatorsViewModel();
+                PageSwitch.View = new SimulatorsView();
+            }
         }
 
 
@@ -129,7 +183,7 @@ namespace MathModelingSimulator.ViewModels
 			Matrix = new StackPanel();
 			if (countRows > 0 && countColumns > 0)
 			{
-				int[,] taskMatrix = new int[countRows, countColumns];
+				int[,] taskMatrix = new int[(int)countRows, (int)countColumns];
 				ShowMatrix(taskMatrix);
 			}
 		}
