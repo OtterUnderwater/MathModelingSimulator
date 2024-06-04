@@ -296,6 +296,8 @@ namespace MathModelingSimulator.ViewModels
 						array[i, j] = tempList[i][j];
 					}
 				}
+				CountRows = array.GetLength(0);
+				CountColumns = array.GetLength(1);
 				return array;
 			}
 			catch
