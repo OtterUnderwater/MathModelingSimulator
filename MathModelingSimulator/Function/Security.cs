@@ -10,7 +10,7 @@ namespace MathModelingSimulator.Function
 		public string GetHashPassword(string password)
 		{
 			byte[] data = Encoding.UTF8.GetBytes(password);
-			HMACSHA256 sha = new HMACSHA256(KeyDb);
+			HMACSHA256 sha = new HMACSHA256(Encoding.UTF8.GetBytes("trioSecretKey"));
 			byte[] result = sha.ComputeHash(data);
             return Convert.ToBase64String(result);
 		}

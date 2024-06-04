@@ -9,9 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Function\Models\" />
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaXaml Remove="Function\Models\**" />
+    <Compile Remove="Function\Models\**" />
+    <EmbeddedResource Remove="Function\Models\**" />
+    <None Remove="Function\Models\**" />
   </ItemGroup>
 
   <ItemGroup>
