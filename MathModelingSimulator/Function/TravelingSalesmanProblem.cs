@@ -14,7 +14,7 @@ namespace MathModelingSimulator.Function
         public int[,] matrix; //матрица, которая соответствует решению
         public int previosId; //целевая функция предыдущего элемента
     }
-    internal class TravelingSalesmanProblem
+    public class TravelingSalesmanProblem
     {
         static int id = 0;
         static int[,] Mass;

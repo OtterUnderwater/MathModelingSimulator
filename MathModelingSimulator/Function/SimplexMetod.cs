@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathModelingSimulator.Function
 {
-    internal class SimplexMetod
+    public  class SimplexMetod
     {
         public int MainSimplexMetod(int[,] mas, bool isMax)
         {
