@@ -40,7 +40,7 @@
 				PasswordChar="*"
 				Margin="0 20 0 0"
 				Text="{Binding AuthVM.Password}"/>
-			<TextBlock Text="{Binding AuthVM.Message}"/>
+			<TextBlock Text="{Binding AuthVM.Message}" TextWrapping="Wrap"/>
 			<Button
 				Content="Войти"
 				HorizontalContentAlignment="Center"
