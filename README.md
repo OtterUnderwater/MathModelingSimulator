@@ -21,7 +21,7 @@ A set of documentation:
 At the moment, the program will not work in the Release version due to dependence on the LiveCharts 2 library.  
 The program reads theoretical material from files located in the Assets folder.  
 Program exceptions are recorded in the log file.  
-Logging in as a teacher may take longer to load, be patient.
+Logging in as a teacher may take longer to load, be patient.  
 If the application is launched from the local NGC computer, then in the Programm file you need to replace the line:  
 ```
 public static string HostNpgsql = "Host=ngknn.ru;Port=5442;Database=trio_33p;Username=33P;Password=12345";
