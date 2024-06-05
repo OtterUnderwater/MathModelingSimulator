@@ -1,5 +1,4 @@
 using  MathModelingSimulator.Function;
-using System.Xml.Linq;
 
 namespace UnitTestsSimMM
 {
@@ -15,9 +14,8 @@ namespace UnitTestsSimMM
             Security obj = new Security();
             string result = obj.GetHashPassword(password);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, result);
         }
-
 
         [TestMethod]
         public void GetMinSimplexMetod_Matrix_Expected15()
@@ -28,8 +26,9 @@ namespace UnitTestsSimMM
             SimplexMetod obj = new SimplexMetod();
             int result = obj.MainSimplexMetod(matrix, false);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
         public void GetTravelingSalesmanProblem_Matrix_Expected41()
         {
@@ -39,8 +38,9 @@ namespace UnitTestsSimMM
             TravelingSalesmanProblem obj = new TravelingSalesmanProblem();
             int result = obj.MainTravelingSalesmanProblem(matrix);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result);
+            Assert.AreEqual(expected, result);
         }
+
         [TestMethod]
         public void GetMaxSimplexMetod_Matrix_Expected11()
         {
@@ -50,8 +50,9 @@ namespace UnitTestsSimMM
             SimplexMetod obj = new SimplexMetod();
             int result = obj.MainSimplexMetod(matrix, true);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result);
-        }
+			Assert.AreEqual(expected, result);
+		}
+
         [TestMethod]
         public void GetRegularTelephone_Telephone_ExpectedTrue()
         {
@@ -61,8 +62,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularTelephone(Telephone);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+			Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularTelephone_Telephone_ExpectedFalse()
         {
@@ -72,8 +74,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularTelephone(Telephone);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularPassword_Password123_ExpectedFalse()
         {
@@ -83,8 +86,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularPassword(Password);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularPassword_PasswordAbcd1234_ExpectedTrue()
         {
@@ -94,8 +98,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularPassword(Password);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularSurname_Surname_ExpectedTrue()
         {
@@ -105,8 +110,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularSurname(Surname);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularSurname_Surname_ExpectedFalse()
         {
@@ -116,8 +122,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularSurname(Surname);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularName_Name_ExpectedTrue()
         {
@@ -127,8 +134,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularName(Name);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularName_Surname_ExpectedFalse()
         {
@@ -138,8 +146,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularName(Name);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularEmail_Email_ExpectedTrue()
         {
@@ -149,8 +158,9 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularEmail(Email);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
+
         [TestMethod]
         public void GetRegularEmail_Email_ExpectedFalse()
         {
@@ -160,7 +170,7 @@ namespace UnitTestsSimMM
             Regular obj = new Regular();
             (bool isTrueField, string message) result = obj.GetRegularEmail(Email);
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expected, result.isTrueField);
+            Assert.AreEqual(expected, result.isTrueField);
         }
     }
 }
