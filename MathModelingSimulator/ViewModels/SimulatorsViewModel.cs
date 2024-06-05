@@ -56,6 +56,7 @@ namespace MathModelingSimulator.ViewModels
 		}
 		public void GetCreateSimulator()
 		{
+			CreateSimulatorVM = new CreateSimulatorViewModel();
 			PageSwitch.View = new CreateSimulatorView();
 		}
 
