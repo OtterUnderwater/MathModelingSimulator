@@ -92,6 +92,17 @@
 					Padding="15 8"
 					Command="{Binding CreateSimulatorVM.EnterMatrix}"/>
 
+				<TextBlock
+					Grid.Column="1"
+					Grid.Row="0"
+					FontSize="14"
+					Foreground="#FFFFFF"
+					Margin="0 10 0 0"
+					HorizontalAlignment="Center"
+					TextWrapping="Wrap"
+					IsVisible="{Binding CreateSimulatorVM.IsVisibleMessageDykstra}"
+					Text="{Binding CreateSimulatorVM.MessageDykstra}"/>
+
 				<Grid ColumnDefinitions="*, *"
 					  Margin="0 30 0 0"
 					  RowDefinitions="*"
