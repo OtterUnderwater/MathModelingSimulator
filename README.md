@@ -62,6 +62,6 @@ If you have any difficulties or questions, create discussion in this repository.
 | test     | adding Tests                                         |
 
 ## Authors
-[ArrayKat2](http://gogs.ngknn.ru:3000/ArrayKat2)  
-[klmnvan](http://gogs.ngknn.ru:3000/klmnvan)  
-[Otter](http://gogs.ngknn.ru:3000/Otter)  
+[ArrayKat](https://github.com/ArrayKat)  
+[klmnvan](https://github.com/klmnvan)  
+[OtterUnderwater](https://github.com/OtterUnderwater)  

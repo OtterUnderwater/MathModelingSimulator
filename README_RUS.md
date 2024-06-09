@@ -61,7 +61,7 @@ public static string HostNpgsql = "Host=edu.pg.ngknn.local;Port=5432;Database=tr
 | test     | добавление тестов                                                    |
 
 ## Авторы
-[ArrayKat2](http://gogs.ngknn.ru:3000/ArrayKat2)  
-[klmnvan](http://gogs.ngknn.ru:3000/klmnvan)  
-[Otter](http://gogs.ngknn.ru:3000/Otter)  
+[ArrayKat](https://github.com/ArrayKat)  
+[klmnvan](https://github.com/klmnvan)  
+[OtterUnderwater](https://github.com/OtterUnderwater)  
 
