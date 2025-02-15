@@ -6,20 +6,23 @@ Layout: https://www.figma.com/design/c4Qv9J8hsPYBfKaHDxltLG/MM-Simulator?node-id
 <img src="https://github.com/OtterUnderwater/MathModelingSimulator/blob/master/logo.png" width="200" alt="Simulator-MM"/>
   
 # Getting started  
-## Technical requirements  
-Supported operating systems:
-* Windows 7 and above
-* mac OS 10.13 
-* Linux
-Processor:
-* Minimum: 2 physical, 4 virtual cores and 2 GHz
-* Recommended: 4 physical cores, 6 virtual cores and 2.6GHz or higher
-Random access memory:
-* Minimum: 8 GB
-* Recommended: 16 GB or more
-Disk space:
-* Minimum: 4 gigabytes of free space
-* Recommended: 8 GB of free space or more
+## Technical requirements   
+Supported operating systems:     
+* Windows 7 and above  
+* mac OS 10.13  
+* Linux  
+
+Processor:   
+* Minimum: 2 physical, 4 virtual cores and 2 GHz  
+* Recommended: 4 physical cores, 6 virtual cores and 2.6GHz or higher  
+
+Random access memory:   
+* Minimum: 8 GB  
+* Recommended: 16 GB or more   
+
+Disk space:   
+* Minimum: 4 gigabytes of free space  
+* Recommended: 8 GB of free space or more  
   
 ## Software Requirements  
 * IDE Visual Studio / Visual Studio Code / Rider  
