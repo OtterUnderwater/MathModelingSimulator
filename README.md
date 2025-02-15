@@ -46,12 +46,12 @@ Any user can change the account information in the profile. The "Log out" button
   ![image](https://github.com/user-attachments/assets/53642fc4-b4f0-4620-a674-b6e865e15fd7)  
 * to add a task: to do this, on the "create a task for the simulator" tab, select the creation method: attach a file – this method suggests selecting a file, the file must be in the format.txt, .csv, or other text separated by a space, comma, or semicolon. Or enter a matrix – generates fields for the n*m matrix, where n and m are the values entered by the user.  
   ![image](https://github.com/user-attachments/assets/3c608edd-67fb-475c-8667-977eddcb7798)  
-* view statistics with all students on their activity in simulators. The teacher's account has a menu item called "Student Statistics", which contains a chart on the number of simulators completed by students for each day. Below the diagram is a table containing all the data on the passage of simulators.  
-  ![image](https://github.com/user-attachments/assets/ea334396-251f-4562-be7a-78d0be728ef0)   
-  When you hover over a point, the date and number of completed simulators are displayed on that day by the student.  
-  ![image](https://github.com/user-attachments/assets/713f59d8-00c3-422c-85ec-fd73a8f0ebf9)
-  The test results can be sorted. To do this, just click on the column you want to sort and the results will be sorted by or against the alphabet.  
-  ![image](https://github.com/user-attachments/assets/2cae7394-68ba-455b-9224-b2d0ba043fd2)   
+* view statistics with all students on their activity in simulators. The teacher's account has a menu item called "Student Statistics", which contains a chart on the number of simulators completed by students for each day. Below the diagram is a table containing all the data on the passage of simulators.    
+  ![image](https://github.com/user-attachments/assets/ea334396-251f-4562-be7a-78d0be728ef0)     
+  When you hover over a point, the date and number of completed simulators are displayed on that day by the student.   
+  ![image](https://github.com/user-attachments/assets/713f59d8-00c3-422c-85ec-fd73a8f0ebf9)   
+  The test results can be sorted. To do this, just click on the column you want to sort and the results will be sorted by or against the alphabet.   
+  ![image](https://github.com/user-attachments/assets/2cae7394-68ba-455b-9224-b2d0ba043fd2)    
   
 ### The student can:   
 * solve the problem – it is enough to select the simulator in the menu item, when selected, the task page opens. Just enter the answer and click reply to find out the results of the task.  
